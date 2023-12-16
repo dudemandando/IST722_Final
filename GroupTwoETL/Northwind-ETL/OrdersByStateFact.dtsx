@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="OrdersByStateFact"
   DTS:PackageType="5"
-  DTS:VersionBuild="5"
-  DTS:VersionGUID="{C322F055-821D-4AF9-A3AC-FDCA1895AC01}">
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{0AE52827-B557-47B7-98A3-5F7A39692548}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -374,13 +374,13 @@ group by [fm_customers].customer_state;</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="264,42"
-          Id="Package\SQL - Truncate stgOrderReviewByState"
-          TopLeft="310,67" />
-        <NodeLayout
           Size="243,42"
           Id="Package\DF - Stage stgOrderReviewByState"
           TopLeft="291,164" />
+        <NodeLayout
+          Size="264,42"
+          Id="Package\SQL - Truncate stgOrderReviewByState"
+          TopLeft="310,67" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="442,109">
@@ -471,14 +471,6 @@ group by [fm_customers].customer_state;</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DF - Stage stgOrderReviewByState\SRC - Stage stgOrderReviewByState">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\DF - Stage stgOrderReviewByState\DST - stgOrderReviewByState">
     <Properties>
       <Property>
@@ -488,6 +480,14 @@ group by [fm_customers].customer_state;</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Stage stgOrderReviewByState\SRC - Stage stgOrderReviewByState">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

@@ -2,7 +2,7 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>GroupTwoETL</Name>
-    <LastWriteTime>2023-12-16T03:18:29.4637522Z</LastWriteTime>
+    <LastWriteTime>2023-12-16T04:10:13.8757893Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
@@ -13,7 +13,7 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>CustomerDimensionImport.dtsx</Name>
-      <LastWriteTime>2023-12-14T02:57:56.8512768Z</LastWriteTime>
+      <LastWriteTime>2023-12-16T04:13:48.9076171Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -33,12 +33,17 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>OrdersByStateFact.dtsx</Name>
-      <LastWriteTime>2023-12-16T03:21:02.446108Z</LastWriteTime>
+      <LastWriteTime>2023-12-16T03:54:12.4090418Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>SubsByStateFactImport.dtsx</Name>
       <LastWriteTime>2023-12-16T03:21:02.3891087Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>StageToDW.dtsx</Name>
+      <LastWriteTime>2023-12-16T05:05:32.5300328Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

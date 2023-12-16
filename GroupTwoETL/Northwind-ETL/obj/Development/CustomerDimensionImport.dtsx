@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="CustomerDimensionImport"
   DTS:PackageType="5"
-  DTS:VersionBuild="12"
-  DTS:VersionGUID="{ADA0020B-F33C-4705-952B-CB20D3AF3A62}">
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{3D66AE4F-0262-48A6-BEFC-A79AD85BC9DA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -47,7 +47,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[stgFudgemart_v3Customer]</property>
+                  name="OpenRowset">[ stgFudgemart_v3Customer]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -149,6 +149,14 @@
                       cachedName="customer_zip"
                       externalMetadataColumnId="Package\DF - Extract from Source to Stage stgCustomer\DST - Stage stgFudgemart_v3Customer.Inputs[OLE DB Destination Input].ExternalColumns[customer_zip]"
                       lineageId="Package\DF - Extract from Source to Stage stgCustomer\SRC - Stage stgCustomer.Outputs[OLE DB Source Output].Columns[customer_zip]" />
+                    <inputColumn
+                      refId="Package\DF - Extract from Source to Stage stgCustomer\DST - Stage stgFudgemart_v3Customer.Inputs[OLE DB Destination Input].Columns[customer_email]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="customer_email"
+                      externalMetadataColumnId="Package\DF - Extract from Source to Stage stgCustomer\DST - Stage stgFudgemart_v3Customer.Inputs[OLE DB Destination Input].ExternalColumns[customer_email]"
+                      lineageId="Package\DF - Extract from Source to Stage stgCustomer\SRC - Stage stgCustomer.Outputs[OLE DB Source Output].Columns[customer_email]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -186,6 +194,12 @@
                       dataType="str"
                       length="20"
                       name="customer_zip" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Extract from Source to Stage stgCustomer\DST - Stage stgFudgemart_v3Customer.Inputs[OLE DB Destination Input].ExternalColumns[customer_email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="customer_email" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -239,7 +253,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        customer_id, customer_firstname, customer_lastname, customer_city, customer_state, customer_zip
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        customer_id, customer_firstname, customer_lastname, customer_city, customer_state, customer_zip, customer_email
 FROM            fm_customers</property>
                 <property
                   dataType="System.String"
@@ -340,6 +354,17 @@ FROM            fm_customers</property>
                       lineageId="Package\DF - Extract from Source to Stage stgCustomer\SRC - Stage stgCustomer.Outputs[OLE DB Source Output].Columns[customer_zip]"
                       name="customer_zip"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Extract from Source to Stage stgCustomer\SRC - Stage stgCustomer.Outputs[OLE DB Source Output].Columns[customer_email]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Extract from Source to Stage stgCustomer\SRC - Stage stgCustomer.Outputs[OLE DB Source Output].ExternalColumns[customer_email]"
+                      length="100"
+                      lineageId="Package\DF - Extract from Source to Stage stgCustomer\SRC - Stage stgCustomer.Outputs[OLE DB Source Output].Columns[customer_email]"
+                      name="customer_email"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -377,6 +402,12 @@ FROM            fm_customers</property>
                       dataType="str"
                       length="20"
                       name="customer_zip" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Extract from Source to Stage stgCustomer\SRC - Stage stgCustomer.Outputs[OLE DB Source Output].ExternalColumns[customer_email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="customer_email" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -424,6 +455,13 @@ FROM            fm_customers</property>
                       length="20"
                       lineageId="Package\DF - Extract from Source to Stage stgCustomer\SRC - Stage stgCustomer.Outputs[OLE DB Source Error Output].Columns[customer_zip]"
                       name="customer_zip" />
+                    <outputColumn
+                      refId="Package\DF - Extract from Source to Stage stgCustomer\SRC - Stage stgCustomer.Outputs[OLE DB Source Error Output].Columns[customer_email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DF - Extract from Source to Stage stgCustomer\SRC - Stage stgCustomer.Outputs[OLE DB Source Error Output].Columns[customer_email]"
+                      name="customer_email" />
                     <outputColumn
                       refId="Package\DF - Extract from Source to Stage stgCustomer\SRC - Stage stgCustomer.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -543,13 +581,13 @@ FROM            fm_customers</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="266,42"
-          Id="Package\DF - Extract from Source to Stage stgCustomer\DST - Stage stgFudgemart_v3Customer"
-          TopLeft="376,250" />
-        <NodeLayout
           Size="198,42"
           Id="Package\DF - Extract from Source to Stage stgCustomer\SRC - Stage stgCustomer"
           TopLeft="394,85" />
+        <NodeLayout
+          Size="266,42"
+          Id="Package\DF - Extract from Source to Stage stgCustomer\DST - Stage stgFudgemart_v3Customer"
+          TopLeft="376,250" />
         <EdgeLayout
           Id="Package\DF - Extract from Source to Stage stgCustomer.Paths[OLE DB Source Output]"
           TopLeft="493,127">
