@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="StageToDW"
   DTS:PackageType="5"
-  DTS:VersionBuild="13"
-  DTS:VersionGUID="{F2259C15-F8E8-4285-BC8C-BF4B7B1C4FE5}">
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{5495BA2C-4507-4684-B618-E9BBB5C4957A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -47,7 +47,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[ stgFudgemart_v3Customer]</property>
+                  name="OpenRowset">[fudgemart].[DimCustomer]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -90,8 +90,8 @@
               <connections>
                 <connection
                   refId="Package\DF - Stage to DimCustomer\Insert Destination.Connections[OleDbConnection]"
-                  connectionManagerID="{8A8FD09A-E0EF-4560-94BB-64421AC61832}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[localhost.fudgemart_stage]"
+                  connectionManagerID="{1DA6CAD4-597D-446A-B449-3E6916D3EADD}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.fudgemart]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -107,15 +107,23 @@
                       refId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].Columns[customer_id]"
                       cachedDataType="i4"
                       cachedName="customer_id"
-                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[customer_id]"
+                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
                       lineageId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_id]" />
+                    <inputColumn
+                      refId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].Columns[customer_email]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="customer_email"
+                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerEmail]"
+                      lineageId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_email]" />
                     <inputColumn
                       refId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].Columns[customer_firstname]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="customer_firstname"
-                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[customer_firstname]"
+                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerFirstName]"
                       lineageId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_firstname]" />
                     <inputColumn
                       refId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].Columns[customer_lastname]"
@@ -123,15 +131,23 @@
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="customer_lastname"
-                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[customer_lastname]"
+                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerLastName]"
                       lineageId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_lastname]" />
+                    <inputColumn
+                      refId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].Columns[customer_zip]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="customer_zip"
+                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CusomerZipcode]"
+                      lineageId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_zip]" />
                     <inputColumn
                       refId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].Columns[customer_city]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="customer_city"
-                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[customer_city]"
+                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerCity]"
                       lineageId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_city]" />
                     <inputColumn
                       refId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].Columns[customer_state]"
@@ -139,67 +155,73 @@
                       cachedDataType="str"
                       cachedLength="2"
                       cachedName="customer_state"
-                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[customer_state]"
+                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerState]"
                       lineageId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_state]" />
-                    <inputColumn
-                      refId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].Columns[customer_zip]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="20"
-                      cachedName="customer_zip"
-                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[customer_zip]"
-                      lineageId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_zip]" />
-                    <inputColumn
-                      refId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].Columns[customer_email]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="customer_email"
-                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[customer_email]"
-                      lineageId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_email]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[customer_id]"
+                      refId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerKey]"
                       dataType="i4"
-                      name="customer_id" />
+                      name="CustomerKey" />
                     <externalMetadataColumn
-                      refId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[customer_firstname]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      name="customer_firstname" />
+                      refId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                      dataType="i4"
+                      name="CustomerID" />
                     <externalMetadataColumn
-                      refId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[customer_lastname]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      name="customer_lastname" />
-                    <externalMetadataColumn
-                      refId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[customer_city]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      name="customer_city" />
-                    <externalMetadataColumn
-                      refId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[customer_state]"
-                      codePage="1252"
-                      dataType="str"
-                      length="2"
-                      name="customer_state" />
-                    <externalMetadataColumn
-                      refId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[customer_zip]"
-                      codePage="1252"
-                      dataType="str"
-                      length="20"
-                      name="customer_zip" />
-                    <externalMetadataColumn
-                      refId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[customer_email]"
+                      refId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerEmail]"
                       codePage="1252"
                       dataType="str"
                       length="100"
-                      name="customer_email" />
+                      name="CustomerEmail" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerFirstName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CustomerFirstName" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerLastName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CustomerLastName" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CusomerZipcode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="CusomerZipcode" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerCity]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CustomerCity" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerState]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="CustomerState" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[RowIsCurrent]"
+                      dataType="wstr"
+                      length="1"
+                      name="RowIsCurrent" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[RowStartDate]"
+                      dataType="dbTimeStamp"
+                      name="RowStartDate" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[RowEndDate]"
+                      dataType="dbTimeStamp"
+                      name="RowEndDate" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[RowChangeReason]"
+                      dataType="wstr"
+                      length="200"
+                      name="RowChangeReason" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -246,7 +268,7 @@
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[ stgFudgemart_v3Customer] SET [customer_city] = ?,[customer_email] = ?,[customer_firstname] = ?,[customer_lastname] = ?,[customer_state] = ?,[customer_zip] = ? WHERE [customer_id] = ?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [fudgemart].[DimCustomer] SET [CusomerZipcode] = ?,[CustomerCity] = ?,[CustomerEmail] = ?,[CustomerFirstName] = ?,[CustomerLastName] = ?,[CustomerState] = ? WHERE [CustomerID] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -255,8 +277,8 @@
               <connections>
                 <connection
                   refId="Package\DF - Stage to DimCustomer\OLE DB Command.Connections[OleDbConnection]"
-                  connectionManagerID="{8A8FD09A-E0EF-4560-94BB-64421AC61832}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[localhost.fudgemart_stage]"
+                  connectionManagerID="{1DA6CAD4-597D-446A-B449-3E6916D3EADD}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.fudgemart]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -269,12 +291,20 @@
                   name="OLE DB Command Input">
                   <inputColumns>
                     <inputColumn
+                      refId="Package\DF - Stage to DimCustomer\OLE DB Command.Inputs[OLE DB Command Input].Columns[customer_zip]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="customer_zip"
+                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_zip]" />
+                    <inputColumn
                       refId="Package\DF - Stage to DimCustomer\OLE DB Command.Inputs[OLE DB Command Input].Columns[customer_city]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="customer_city"
-                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
                       lineageId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_city]" />
                     <inputColumn
                       refId="Package\DF - Stage to DimCustomer\OLE DB Command.Inputs[OLE DB Command Input].Columns[customer_email]"
@@ -282,7 +312,7 @@
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="customer_email"
-                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
                       lineageId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_email]" />
                     <inputColumn
                       refId="Package\DF - Stage to DimCustomer\OLE DB Command.Inputs[OLE DB Command Input].Columns[customer_firstname]"
@@ -290,7 +320,7 @@
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="customer_firstname"
-                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
                       lineageId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_firstname]" />
                     <inputColumn
                       refId="Package\DF - Stage to DimCustomer\OLE DB Command.Inputs[OLE DB Command Input].Columns[customer_id]"
@@ -304,7 +334,7 @@
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="customer_lastname"
-                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
                       lineageId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_lastname]" />
                     <inputColumn
                       refId="Package\DF - Stage to DimCustomer\OLE DB Command.Inputs[OLE DB Command Input].Columns[customer_state]"
@@ -312,16 +342,8 @@
                       cachedDataType="str"
                       cachedLength="2"
                       cachedName="customer_state"
-                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
-                      lineageId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_state]" />
-                    <inputColumn
-                      refId="Package\DF - Stage to DimCustomer\OLE DB Command.Inputs[OLE DB Command Input].Columns[customer_zip]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="20"
-                      cachedName="customer_zip"
                       externalMetadataColumnId="Package\DF - Stage to DimCustomer\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
-                      lineageId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_zip]" />
+                      lineageId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_state]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -329,7 +351,7 @@
                       refId="Package\DF - Stage to DimCustomer\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="20"
                       name="Param_0">
                       <properties>
                         <property
@@ -342,7 +364,7 @@
                       refId="Package\DF - Stage to DimCustomer\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
                       codePage="1252"
                       dataType="str"
-                      length="100"
+                      length="50"
                       name="Param_1">
                       <properties>
                         <property
@@ -355,7 +377,7 @@
                       refId="Package\DF - Stage to DimCustomer\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       name="Param_2">
                       <properties>
                         <property
@@ -381,7 +403,7 @@
                       refId="Package\DF - Stage to DimCustomer\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
                       codePage="1252"
                       dataType="str"
-                      length="2"
+                      length="50"
                       name="Param_4">
                       <properties>
                         <property
@@ -394,7 +416,7 @@
                       refId="Package\DF - Stage to DimCustomer\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
                       codePage="1252"
                       dataType="str"
-                      length="20"
+                      length="25"
                       name="Param_5">
                       <properties>
                         <property
@@ -461,7 +483,7 @@
                   dataType="System.String"
                   description="Specifies the SELECT statement used to create a schema rowset."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [customer_city], [customer_email], [customer_firstname], [customer_id], [customer_lastname], [customer_state], [customer_zip] FROM [dbo].[ stgFudgemart_v3Customer]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [CusomerZipcode], [CustomerCity], [CustomerEmail], [CustomerFirstName], [CustomerID], [CustomerLastName], [CustomerState] FROM [fudgemart].[DimCustomer]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
@@ -499,8 +521,8 @@
               <connections>
                 <connection
                   refId="Package\DF - Stage to DimCustomer\Slowly Changing Dimension.Connections[LookupConnection]"
-                  connectionManagerID="{8A8FD09A-E0EF-4560-94BB-64421AC61832}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[localhost.fudgemart_stage]"
+                  connectionManagerID="{1DA6CAD4-597D-446A-B449-3E6916D3EADD}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.fudgemart]"
                   description="Defines the connection to use for lookups in the dimension table"
                   name="LookupConnection" />
               </connections>
@@ -510,12 +532,27 @@
                   name="Slowly Changing Dimension Input">
                   <inputColumns>
                     <inputColumn
+                      refId="Package\DF - Stage to DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[customer_zip]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="customer_zip"
+                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[CusomerZipcode]"
+                      lineageId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_zip]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
                       refId="Package\DF - Stage to DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[customer_city]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="customer_city"
-                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[customer_city]"
+                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[CustomerCity]"
                       lineageId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_city]">
                       <properties>
                         <property
@@ -530,7 +567,7 @@
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="customer_email"
-                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[customer_email]"
+                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[CustomerEmail]"
                       lineageId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_email]">
                       <properties>
                         <property
@@ -545,7 +582,7 @@
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="customer_firstname"
-                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[customer_firstname]"
+                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[CustomerFirstName]"
                       lineageId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_firstname]">
                       <properties>
                         <property
@@ -558,7 +595,7 @@
                       refId="Package\DF - Stage to DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[customer_id]"
                       cachedDataType="i4"
                       cachedName="customer_id"
-                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[customer_id]"
+                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[CustomerID]"
                       lineageId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_id]">
                       <properties>
                         <property
@@ -573,7 +610,7 @@
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="customer_lastname"
-                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[customer_lastname]"
+                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[CustomerLastName]"
                       lineageId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_lastname]">
                       <properties>
                         <property
@@ -588,23 +625,8 @@
                       cachedDataType="str"
                       cachedLength="2"
                       cachedName="customer_state"
-                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[customer_state]"
+                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[CustomerState]"
                       lineageId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_state]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          name="ColumnType"
-                          typeConverter="ColumnType">2</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DF - Stage to DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[customer_zip]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="20"
-                      cachedName="customer_zip"
-                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[customer_zip]"
-                      lineageId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_zip]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -616,45 +638,45 @@
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DF - Stage to DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[customer_city]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      name="customer_city" />
-                    <externalMetadataColumn
-                      refId="Package\DF - Stage to DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[customer_email]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="customer_email" />
-                    <externalMetadataColumn
-                      refId="Package\DF - Stage to DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[customer_firstname]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      name="customer_firstname" />
-                    <externalMetadataColumn
-                      refId="Package\DF - Stage to DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[customer_id]"
-                      dataType="i4"
-                      name="customer_id" />
-                    <externalMetadataColumn
-                      refId="Package\DF - Stage to DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[customer_lastname]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      name="customer_lastname" />
-                    <externalMetadataColumn
-                      refId="Package\DF - Stage to DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[customer_state]"
-                      codePage="1252"
-                      dataType="str"
-                      length="2"
-                      name="customer_state" />
-                    <externalMetadataColumn
-                      refId="Package\DF - Stage to DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[customer_zip]"
+                      refId="Package\DF - Stage to DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[CusomerZipcode]"
                       codePage="1252"
                       dataType="str"
                       length="20"
-                      name="customer_zip" />
+                      name="CusomerZipcode" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[CustomerCity]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CustomerCity" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[CustomerEmail]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="CustomerEmail" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[CustomerFirstName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CustomerFirstName" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[CustomerID]"
+                      dataType="i4"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[CustomerLastName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CustomerLastName" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[CustomerState]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="CustomerState" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -734,7 +756,8 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        customer_id, customer_firstname + ' ' + customer_lastname AS CustomerName, customer_city, customer_state, customer_zip, customer_email
+FROM            [ stgFudgemart_v3Customer]</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -780,28 +803,6 @@
                       name="customer_id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_firstname]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].ExternalColumns[customer_firstname]"
-                      length="50"
-                      lineageId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_firstname]"
-                      name="customer_firstname"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_lastname]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].ExternalColumns[customer_lastname]"
-                      length="50"
-                      lineageId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_lastname]"
-                      name="customer_lastname"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_city]"
                       codePage="1252"
                       dataType="str"
@@ -845,6 +846,28 @@
                       lineageId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_email]"
                       name="customer_email"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_firstname]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].ExternalColumns[customer_firstname]"
+                      length="50"
+                      lineageId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_firstname]"
+                      name="customer_firstname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_lastname]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].ExternalColumns[customer_lastname]"
+                      length="50"
+                      lineageId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_lastname]"
+                      name="customer_lastname"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -852,18 +875,6 @@
                       refId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].ExternalColumns[customer_id]"
                       dataType="i4"
                       name="customer_id" />
-                    <externalMetadataColumn
-                      refId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].ExternalColumns[customer_firstname]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      name="customer_firstname" />
-                    <externalMetadataColumn
-                      refId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].ExternalColumns[customer_lastname]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      name="customer_lastname" />
                     <externalMetadataColumn
                       refId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].ExternalColumns[customer_city]"
                       codePage="1252"
@@ -888,6 +899,18 @@
                       dataType="str"
                       length="100"
                       name="customer_email" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].ExternalColumns[customer_firstname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="customer_firstname" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimCustomer\SRC - Customer.Outputs[OLE DB Source Output].ExternalColumns[customer_lastname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="customer_lastname" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -980,21 +1003,6 @@
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\DF - Stage to DimDate"
-      DTS:CreationName="Microsoft.Pipeline"
-      DTS:Description="Data Flow Task"
-      DTS:DTSID="{D96D3206-D668-45D1-A87F-381DBB11132B}"
-      DTS:ExecutableType="Microsoft.Pipeline"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="DF - Stage to DimDate"
-      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <pipeline
-          version="1" />
-      </DTS:ObjectData>
-    </DTS:Executable>
   </DTS:Executables>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -1009,66 +1017,12 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="186,42"
-          Id="Package\DF - Stage to DimDate"
-          TopLeft="273,111" />
-        <NodeLayout
           Size="209,42"
           Id="Package\DF - Stage to DimCustomer"
-          TopLeft="589,139" />
+          TopLeft="139,89" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
-  <TaskHost
-    design-time-name="Package\DF - Stage to DimDate">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="187,42"
-          Id="45"
-          TopLeft="271,104" />
-        <NodeLayout
-          Size="171,42"
-          Id="2"
-          TopLeft="257,226" />
-        <EdgeLayout
-          Id="219"
-          TopLeft="364.5,146">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-22,80"
-              Start="0,0"
-              End="-22,72.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,36" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,36"
-                    Point2="0,40"
-                    Point3="-4,40" />
-                  <mssgle:LineSegment
-                    End="-18,40" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-18,40"
-                    Point2="-22,40"
-                    Point3="-22,44" />
-                  <mssgle:LineSegment
-                    End="-22,72.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
   <TaskHost
     design-time-name="Package\DF - Stage to DimCustomer">
     <LayoutInfo>
@@ -1208,48 +1162,48 @@
         <Value
           type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SCDWizardMetadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionID&gt;{8A8FD09A-E0EF-4560-94BB-64421AC61832}&lt;/ConnectionID&gt;
-  &lt;TableName&gt;[dbo].[ stgFudgemart_v3Customer]&lt;/TableName&gt;
+  &lt;ConnectionID&gt;{1DA6CAD4-597D-446A-B449-3E6916D3EADD}&lt;/ConnectionID&gt;
+  &lt;TableName&gt;[fudgemart].[DimCustomer]&lt;/TableName&gt;
   &lt;InputToColumnsCollection&gt;
     &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_zip]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;CusomerZipcode&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_city]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;customer_city&lt;/ColumnName&gt;
+      &lt;ColumnName&gt;CustomerCity&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_email]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;customer_email&lt;/ColumnName&gt;
+      &lt;ColumnName&gt;CustomerEmail&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_firstname]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;customer_firstname&lt;/ColumnName&gt;
+      &lt;ColumnName&gt;CustomerFirstName&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_id]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;customer_id&lt;/ColumnName&gt;
+      &lt;ColumnName&gt;CustomerID&lt;/ColumnName&gt;
       &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
       &lt;ChangeType&gt;None&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_lastname]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;customer_lastname&lt;/ColumnName&gt;
+      &lt;ColumnName&gt;CustomerLastName&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_state]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;customer_state&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC - Customer.Outputs[OLE DB Source Output].Columns[customer_zip]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;customer_zip&lt;/ColumnName&gt;
+      &lt;ColumnName&gt;CustomerState&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
@@ -1263,13 +1217,26 @@
   &lt;UseStartEndDate&gt;false&lt;/UseStartEndDate&gt;
   &lt;CurrentIndicatorColumn /&gt;
   &lt;InferredIndicatorColumn /&gt;
-  &lt;ValueCurrent&gt;Current&lt;/ValueCurrent&gt;
-  &lt;ValueExpired&gt;Expired&lt;/ValueExpired&gt;
+  &lt;ValueCurrent /&gt;
+  &lt;ValueExpired /&gt;
   &lt;StartDateColumn /&gt;
   &lt;EndDateColumn /&gt;
   &lt;DateVariable /&gt;
   &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
 &lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Stage to DimCustomer\Insert Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

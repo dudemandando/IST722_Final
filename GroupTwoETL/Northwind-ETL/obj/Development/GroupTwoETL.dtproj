@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">lab000001</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAi21YKBv/5EqzmM3lGVBG8QAAAAACAAAAAAAQZgAAAAEAACAAAACjNZtYUbOhYItv4LEMYTcM1r2Jp4k9GZGo+fuBhQCqrgAAAAAOgAAAAAIAACAAAAAEK9tLpLZWKzlnBMNkqdBxYQzfpcD6/8Icqm98PBcUGZAAAADKMXH+6hTWQm2IGlDEXX0s7RvYgZyu/IMQEEQbJbt5/pkQ290qXmQAuLTa6iS7QVPuGD2/yIa9/5lbtijcv7lCN717K42raPtCBr75ff85Ofazs/f0rn4fdmZHHNWldHsWgL1qhoW43vxZn565M5XzsExcV6BFsWmwfnU1gpaaDTVwsPRpKSz3L3wu6YSdsRBAAAAATWYhV81e6VOzfRWOESY8RjZdQYSg/zL+Zo94ujlxb0RiGsHZ7vby4uGeRQEooWxbVVg2wgHi4YgH/aA8NUEKig==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAi21YKBv/5EqzmM3lGVBG8QAAAAACAAAAAAAQZgAAAAEAACAAAAB+NHGjNf5GroR5plMaNL1xNRUeuCYU+DnIAVpt1ogsYAAAAAAOgAAAAAIAACAAAADKCPPXt9YOLxW7+JFO6Q3/Mk3ysp4ZAWvlt0Cgx7lIaJAAAACyWesDJe01p+AH41ZFDn0bCnDe7rgcIHtaT5EcUT7ZSaRJ/gD8Yl8btV4X7IEEx2SpTGxkmch5BcMFj34NDE//dQ64c4GCK19cBu/w9wffO85rZOp31QhHlpvdcjbJ92GJPVj1rOH0pUdy8QuXbuynFFjJNO384QMvycpLxZ2WtK4FTnPp55WkQvbHrRyl8hNAAAAAWzwkwJr2SxSYPvQkI8+n5Ep8ZFFSlMzogtVGmzbUmmluIQUMGxy7LAIBa0Py7Kk6IYqCiLn/FwZEJ5YD9CClyw==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -869,10 +869,10 @@
                 <SSIS:Property SSIS:Name="Name">CustomerDimensionImport</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">16</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">14</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{3D66AE4F-0262-48A6-BEFC-A79AD85BC9DA}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{67EF07DB-C3B3-4527-8341-3A916311E6C5}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -971,10 +971,10 @@
                 <SSIS:Property SSIS:Name="Name">StageToDW</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">13</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">21</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{F2259C15-F8E8-4285-BC8C-BF4B7B1C4FE5}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{5495BA2C-4507-4684-B618-E9BBB5C4957A}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
