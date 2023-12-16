@@ -2,7 +2,7 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>GroupTwoETL</Name>
-    <LastWriteTime>2023-12-14T03:14:26.0933146Z</LastWriteTime>
+    <LastWriteTime>2023-12-16T03:10:18.8151413Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
@@ -28,7 +28,12 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>ProductReviewDimensionImport.dtsx</Name>
-      <LastWriteTime>2023-12-14T03:14:25.5251983Z</LastWriteTime>
+      <LastWriteTime>2023-12-14T03:14:56.2865574Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>OrdersByStateFact.dtsx</Name>
+      <LastWriteTime>2023-12-16T03:13:59.6595553Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
