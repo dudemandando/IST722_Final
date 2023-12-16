@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="StageToDW"
   DTS:PackageType="5"
-  DTS:VersionBuild="25"
-  DTS:VersionGUID="{2FC2C2E2-66F9-477C-A3CA-6E3B304A8D98}">
+  DTS:VersionBuild="36"
+  DTS:VersionGUID="{256BAD4E-F676-4936-AF83-684B39191208}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -2957,7 +2957,1092 @@ FROM            [ stgFudgemart_v3Customer]</property>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DF - Stage to DimSubs"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{BA05ABE6-3E3B-4AC2-80D5-706FCED98890}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF - Stage to DimSubs"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DF - Stage to DimSubs\Insert Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[fudgemart].[DimSubs]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - Stage to DimSubs\Insert Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{1DA6CAD4-597D-446A-B449-3E6916D3EADD}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.fudgemart]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF - Stage to DimSubs\Insert Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF - Stage to DimSubs\Insert Destination.Inputs[OLE DB Destination Input].Columns[AccountID]"
+                      cachedDataType="i4"
+                      cachedName="AccountID"
+                      externalMetadataColumnId="Package\DF - Stage to DimSubs\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[AccountID]"
+                      lineageId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Output].Columns[AccountID]" />
+                    <inputColumn
+                      refId="Package\DF - Stage to DimSubs\Insert Destination.Inputs[OLE DB Destination Input].Columns[ZipState]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="ZipState"
+                      externalMetadataColumnId="Package\DF - Stage to DimSubs\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ZipState]"
+                      lineageId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Output].Columns[ZipState]" />
+                    <inputColumn
+                      refId="Package\DF - Stage to DimSubs\Insert Destination.Inputs[OLE DB Destination Input].Columns[PlanName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="PlanName"
+                      externalMetadataColumnId="Package\DF - Stage to DimSubs\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[PlanName]"
+                      lineageId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Output].Columns[PlanName]" />
+                    <inputColumn
+                      refId="Package\DF - Stage to DimSubs\Insert Destination.Inputs[OLE DB Destination Input].Columns[PlanPrice]"
+                      cachedDataType="cy"
+                      cachedName="PlanPrice"
+                      externalMetadataColumnId="Package\DF - Stage to DimSubs\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[PlanPrice]"
+                      lineageId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Output].Columns[PlanPrice]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimSubs\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[SubID]"
+                      dataType="i4"
+                      name="SubID" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimSubs\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[AccountID]"
+                      dataType="i4"
+                      name="AccountID" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimSubs\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ZipState]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="ZipState" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimSubs\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[PlanName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PlanName" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimSubs\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[PlanPrice]"
+                      dataType="cy"
+                      name="PlanPrice" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimSubs\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[RowIsCurrent]"
+                      dataType="wstr"
+                      length="1"
+                      name="RowIsCurrent" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimSubs\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[RowStartDate]"
+                      dataType="dbTimeStamp"
+                      name="RowStartDate" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimSubs\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[RowEndDate]"
+                      dataType="dbTimeStamp"
+                      name="RowEndDate" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimSubs\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[RowChangeReason]"
+                      dataType="wstr"
+                      length="200"
+                      name="RowChangeReason" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF - Stage to DimSubs\Insert Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF - Stage to DimSubs\Insert Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Stage to DimSubs\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage to DimSubs\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - Stage to DimSubs\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage to DimSubs\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF - Stage to DimSubs\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [fudgemart].[DimSubs] SET [PlanName] = ?,[PlanPrice] = ?,[ZipState] = ? WHERE [AccountID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - Stage to DimSubs\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="{1DA6CAD4-597D-446A-B449-3E6916D3EADD}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.fudgemart]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF - Stage to DimSubs\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF - Stage to DimSubs\OLE DB Command.Inputs[OLE DB Command Input].Columns[AccountID]"
+                      cachedDataType="i4"
+                      cachedName="AccountID"
+                      externalMetadataColumnId="Package\DF - Stage to DimSubs\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Output].Columns[AccountID]" />
+                    <inputColumn
+                      refId="Package\DF - Stage to DimSubs\OLE DB Command.Inputs[OLE DB Command Input].Columns[PlanName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="PlanName"
+                      externalMetadataColumnId="Package\DF - Stage to DimSubs\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Output].Columns[PlanName]" />
+                    <inputColumn
+                      refId="Package\DF - Stage to DimSubs\OLE DB Command.Inputs[OLE DB Command Input].Columns[PlanPrice]"
+                      cachedDataType="cy"
+                      cachedName="PlanPrice"
+                      externalMetadataColumnId="Package\DF - Stage to DimSubs\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Output].Columns[PlanPrice]" />
+                    <inputColumn
+                      refId="Package\DF - Stage to DimSubs\OLE DB Command.Inputs[OLE DB Command Input].Columns[ZipState]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="ZipState"
+                      externalMetadataColumnId="Package\DF - Stage to DimSubs\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Output].Columns[ZipState]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimSubs\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimSubs\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="cy"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimSubs\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimSubs\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="i4"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF - Stage to DimSubs\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\DF - Stage to DimSubs\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF - Stage to DimSubs\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\DF - Stage to DimSubs\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Stage to DimSubs\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage to DimSubs\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - Stage to DimSubs\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage to DimSubs\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF - Stage to DimSubs\Slowly Changing Dimension"
+              componentClassID="Microsoft.SCD"
+              contactInfo="Slowly Changing Dimension;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Updates a SQL Server Analysis Services data warehouse dimension. Update dimension records that are already present and  insert dimension records that aren't. For example, update the DimProduct table of the AdventureWorksDW OLAP database with data from the Products table in the AdventureWorks OLTP database."
+              name="Slowly Changing Dimension"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SELECT statement used to create a schema rowset."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [AccountID], [PlanName], [PlanPrice], [ZipState] FROM [fudgemart].[DimSubs]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
+                  name="CurrentRowWhere"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether historical attribute updates are directed to the transformation output for changing attribute updates."
+                  name="UpdateChangingAttributeHistory">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when columns with fixed attributes contain changes."
+                  name="FailOnFixedAttributeChange">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the column name for the inferred member."
+                  name="InferredMemberIndicator"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether inferred member updates are detected."
+                  name="EnableInferredMember">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when a lookup of an existing record fails."
+                  name="FailOnLookupFailure">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies that all rows in the input are new or the transformation detects the change type."
+                  name="IncomingRowChangeType"
+                  typeConverter="IncomingRowChangeType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - Stage to DimSubs\Slowly Changing Dimension.Connections[LookupConnection]"
+                  connectionManagerID="{1DA6CAD4-597D-446A-B449-3E6916D3EADD}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.fudgemart]"
+                  description="Defines the connection to use for lookups in the dimension table"
+                  name="LookupConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF - Stage to DimSubs\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+                  name="Slowly Changing Dimension Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF - Stage to DimSubs\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[AccountID]"
+                      cachedDataType="i4"
+                      cachedName="AccountID"
+                      externalMetadataColumnId="Package\DF - Stage to DimSubs\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[AccountID]"
+                      lineageId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Output].Columns[AccountID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF - Stage to DimSubs\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[PlanName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="PlanName"
+                      externalMetadataColumnId="Package\DF - Stage to DimSubs\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[PlanName]"
+                      lineageId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Output].Columns[PlanName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF - Stage to DimSubs\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[PlanPrice]"
+                      cachedDataType="cy"
+                      cachedName="PlanPrice"
+                      externalMetadataColumnId="Package\DF - Stage to DimSubs\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[PlanPrice]"
+                      lineageId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Output].Columns[PlanPrice]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF - Stage to DimSubs\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[ZipState]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="ZipState"
+                      externalMetadataColumnId="Package\DF - Stage to DimSubs\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[ZipState]"
+                      lineageId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Output].Columns[ZipState]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimSubs\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[AccountID]"
+                      dataType="i4"
+                      name="AccountID" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimSubs\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[PlanName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PlanName" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimSubs\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[PlanPrice]"
+                      dataType="cy"
+                      name="PlanPrice" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimSubs\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[ZipState]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="ZipState" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF - Stage to DimSubs\Slowly Changing Dimension.Outputs[Unchanged Output]"
+                  description="Unchanged rows"
+                  exclusionGroup="1"
+                  name="Unchanged Output"
+                  synchronousInputId="Package\DF - Stage to DimSubs\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF - Stage to DimSubs\Slowly Changing Dimension.Outputs[New Output]"
+                  description="New rows"
+                  exclusionGroup="1"
+                  name="New Output"
+                  synchronousInputId="Package\DF - Stage to DimSubs\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF - Stage to DimSubs\Slowly Changing Dimension.Outputs[Fixed Attribute Output]"
+                  description="Rows with changes in columns tagged FixedAttribute"
+                  exclusionGroup="1"
+                  name="Fixed Attribute Output"
+                  synchronousInputId="Package\DF - Stage to DimSubs\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF - Stage to DimSubs\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]"
+                  description="These rows contain new information for ChangingAttribute (Type 1) column changes"
+                  exclusionGroup="1"
+                  name="Changing Attribute Updates Output"
+                  synchronousInputId="Package\DF - Stage to DimSubs\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF - Stage to DimSubs\Slowly Changing Dimension.Outputs[Historical Attribute Inserts Output]"
+                  description="HistoricalAttribute (Type 2) changes result in these new rows"
+                  exclusionGroup="2"
+                  name="Historical Attribute Inserts Output"
+                  synchronousInputId="Package\DF - Stage to DimSubs\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF - Stage to DimSubs\Slowly Changing Dimension.Outputs[Inferred Member Updates Output]"
+                  description="Information to update unpopulated initial dimension row"
+                  exclusionGroup="1"
+                  name="Inferred Member Updates Output"
+                  synchronousInputId="Package\DF - Stage to DimSubs\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC - Stage to DimSubs"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[stgSubs]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Connections[OleDbConnection]"
+                  connectionManagerID="{8A8FD09A-E0EF-4560-94BB-64421AC61832}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.fudgemart_stage]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Output].Columns[AccountID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Output].ExternalColumns[AccountID]"
+                      lineageId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Output].Columns[AccountID]"
+                      name="AccountID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Output].Columns[ZipState]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Output].ExternalColumns[ZipState]"
+                      length="2"
+                      lineageId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Output].Columns[ZipState]"
+                      name="ZipState"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Output].Columns[PlanName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Output].ExternalColumns[PlanName]"
+                      length="50"
+                      lineageId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Output].Columns[PlanName]"
+                      name="PlanName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Output].Columns[PlanPrice]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Output].ExternalColumns[PlanPrice]"
+                      lineageId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Output].Columns[PlanPrice]"
+                      name="PlanPrice"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Output].ExternalColumns[AccountID]"
+                      dataType="i4"
+                      name="AccountID" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Output].ExternalColumns[ZipState]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="ZipState" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Output].ExternalColumns[PlanName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PlanName" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Output].ExternalColumns[PlanPrice]"
+                      dataType="cy"
+                      name="PlanPrice" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Error Output].Columns[AccountID]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Error Output].Columns[AccountID]"
+                      name="AccountID" />
+                    <outputColumn
+                      refId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Error Output].Columns[ZipState]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      lineageId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Error Output].Columns[ZipState]"
+                      name="ZipState" />
+                    <outputColumn
+                      refId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Error Output].Columns[PlanName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Error Output].Columns[PlanName]"
+                      name="PlanName" />
+                    <outputColumn
+                      refId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Error Output].Columns[PlanPrice]"
+                      dataType="cy"
+                      lineageId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Error Output].Columns[PlanPrice]"
+                      name="PlanPrice" />
+                    <outputColumn
+                      refId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF - Stage to DimSubs.Paths[Changing Attribute Updates Output]"
+              endId="Package\DF - Stage to DimSubs\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Changing Attribute Updates Output"
+              startId="Package\DF - Stage to DimSubs\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]" />
+            <path
+              refId="Package\DF - Stage to DimSubs.Paths[New Output]"
+              endId="Package\DF - Stage to DimSubs\Insert Destination.Inputs[OLE DB Destination Input]"
+              name="New Output"
+              startId="Package\DF - Stage to DimSubs\Slowly Changing Dimension.Outputs[New Output]" />
+            <path
+              refId="Package\DF - Stage to DimSubs.Paths[OLE DB Source Output]"
+              endId="Package\DF - Stage to DimSubs\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+              name="OLE DB Source Output"
+              startId="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DF - Stage to FactOrderReviewsByState"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{2985FA99-3E2D-4575-A9AA-794411255684}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF - Stage to FactOrderReviewsByState"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DST - FactOrderReviewsByState"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[fudgemart].[OrderReviewByState]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Connections[OleDbConnection]"
+                  connectionManagerID="{1DA6CAD4-597D-446A-B449-3E6916D3EADD}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.fudgemart]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].Columns[State]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="State"
+                      externalMetadataColumnId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                      lineageId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[State]" />
+                    <inputColumn
+                      refId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].Columns[TotalStateOrders]"
+                      cachedDataType="i4"
+                      cachedName="TotalStateOrders"
+                      externalMetadataColumnId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].ExternalColumns[OrderCount]"
+                      lineageId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[TotalStateOrders]" />
+                    <inputColumn
+                      refId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].Columns[AverageProductReview]"
+                      cachedDataType="i4"
+                      cachedName="AverageProductReview"
+                      externalMetadataColumnId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].ExternalColumns[AverageReview]"
+                      lineageId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[AverageProductReview]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].ExternalColumns[OrderCount]"
+                      dataType="i4"
+                      name="OrderCount" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].ExternalColumns[AverageReview]"
+                      dataType="r8"
+                      name="AverageReview" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC - Stage Query OrderReviews"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select [fudgemart].[fudgemart].[DimCustomer].CustomerState as State,
+COUNT([fudgemart].[DimOrders].OrdersID) as TotalStateOrders,
+avg([fudgemart].[DimProductReview].ReviewStars) as AverageProductReview
+from [fudgemart].[fudgemart].[DimCustomer]
+join [fudgemart].[DimOrders] on [fudgemart].[fudgemart].[DimCustomer].CustomerID = [fudgemart].[DimOrders].CustomerID
+join [fudgemart].[DimProductReview] on [fudgemart].[fudgemart].[DimCustomer].[CustomerID] = [fudgemart].[DimProductReview].CustomerID
+group by [fudgemart].[fudgemart].[DimCustomer].CustomerState;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Connections[OleDbConnection]"
+                  connectionManagerID="{1DA6CAD4-597D-446A-B449-3E6916D3EADD}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.fudgemart]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                      length="2"
+                      lineageId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[State]"
+                      name="State"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[TotalStateOrders]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].ExternalColumns[TotalStateOrders]"
+                      lineageId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[TotalStateOrders]"
+                      name="TotalStateOrders"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[AverageProductReview]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].ExternalColumns[AverageProductReview]"
+                      lineageId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[AverageProductReview]"
+                      name="AverageProductReview"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].ExternalColumns[TotalStateOrders]"
+                      dataType="i4"
+                      name="TotalStateOrders" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].ExternalColumns[AverageProductReview]"
+                      dataType="i4"
+                      name="AverageProductReview" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[State]"
+                      name="State" />
+                    <outputColumn
+                      refId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[TotalStateOrders]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[TotalStateOrders]"
+                      name="TotalStateOrders" />
+                    <outputColumn
+                      refId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[AverageProductReview]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[AverageProductReview]"
+                      name="AverageProductReview" />
+                    <outputColumn
+                      refId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF - Stage to FactOrderReviewsByState.Paths[OLE DB Source Output]"
+              endId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{3AEF1AEF-8F29-405F-B0F5-60C968709420}"
+      DTS:From="Package\DF - Stage to DimCustomer"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DF - Stage to FactOrderReviewsByState" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{C1591C1A-5C62-4B20-A338-62B4910883DF}"
+      DTS:From="Package\DF - Stage DimOrders"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\DF - Stage to FactOrderReviewsByState" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{51F13AD7-7D3F-4EF3-BDD2-2C9F389B95B1}"
+      DTS:From="Package\DF - Stage to DimProductReview"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\DF - Stage to FactOrderReviewsByState" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{2F604045-3306-42FF-8283-32E0ED358A07}"
+      DTS:From="Package\DF - Stage to DimProduct"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\DF - Stage to FactOrderReviewsByState" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{5F5CBB1F-96E2-46E7-B841-832860919E94}"
+      DTS:From="Package\DF - Stage to DimSubs"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\DF - Stage to FactOrderReviewsByState" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -2969,23 +4054,201 @@ FROM            [ stgFudgemart_v3Customer]</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="209,42"
           Id="Package\DF - Stage to DimCustomer"
-          TopLeft="49,48" />
+          TopLeft="83,96" />
         <NodeLayout
           Size="199,42"
           Id="Package\DF - Stage to DimProduct"
-          TopLeft="51,142" />
+          TopLeft="5,209" />
         <NodeLayout
           Size="182,42"
           Id="Package\DF - Stage DimOrders"
-          TopLeft="51,223" />
+          TopLeft="377,94" />
         <NodeLayout
           Size="233,42"
           Id="Package\DF - Stage to DimProductReview"
-          TopLeft="435,84" />
+          TopLeft="618,103" />
+        <NodeLayout
+          Size="266,42"
+          Id="Package\DF - Stage to FactOrderReviewsByState"
+          TopLeft="387,229" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="187.5,138">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="255.1,91"
+              Start="0,0"
+              End="255.1,83.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,60.1728525980912" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,60.1728525980912"
+                    Point2="0,64.1728525980912"
+                    Point3="4,64.1728525980912" />
+                  <mssgle:LineSegment
+                    End="251.1,64.1728525980912" />
+                  <mssgle:CubicBezierSegment
+                    Point1="251.1,64.1728525980912"
+                    Point2="255.1,64.1728525980912"
+                    Point3="255.1,68.1728525980912" />
+                  <mssgle:LineSegment
+                    End="255.1,83.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="468,136">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="26.2,93"
+              Start="0,0"
+              End="26.2,85.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.4945878434638" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,47.4945878434638"
+                    Point2="0,51.4945878434638"
+                    Point3="4,51.4945878434638" />
+                  <mssgle:LineSegment
+                    End="22.2,51.4945878434638" />
+                  <mssgle:CubicBezierSegment
+                    Point1="22.2,51.4945878434638"
+                    Point2="26.2,51.4945878434638"
+                    Point3="26.2,55.4945878434638" />
+                  <mssgle:LineSegment
+                    End="26.2,85.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="734.5,145">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-188.7,84"
+              Start="0,0"
+              End="-188.7,76.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.511240632806" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,42.511240632806"
+                    Point2="0,46.511240632806"
+                    Point3="-4,46.511240632806" />
+                  <mssgle:LineSegment
+                    End="-184.7,46.511240632806" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-184.7,46.511240632806"
+                    Point2="-188.7,46.511240632806"
+                    Point3="-188.7,50.511240632806" />
+                  <mssgle:LineSegment
+                    End="-188.7,76.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="204,230">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="183,20"
+              Start="0,0"
+              End="175.5,20">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="87.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="87.5,0"
+                    Point2="91.5,0"
+                    Point3="91.5,4" />
+                  <mssgle:LineSegment
+                    End="91.5,16" />
+                  <mssgle:CubicBezierSegment
+                    Point1="91.5,16"
+                    Point2="91.5,20"
+                    Point3="95.5,20" />
+                  <mssgle:LineSegment
+                    End="175.5,20" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="186,42"
+          Id="Package\DF - Stage to DimSubs"
+          TopLeft="956,159" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="1049,201">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-451.6,28"
+              Start="0,0"
+              End="-451.6,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.745493107105" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.745493107105"
+                    Point2="0,19.745493107105"
+                    Point3="-4,19.745493107105" />
+                  <mssgle:LineSegment
+                    End="-447.6,19.745493107105" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-447.6,19.745493107105"
+                    Point2="-451.6,19.745493107105"
+                    Point3="-451.6,23.745493107105" />
+                  <mssgle:LineSegment
+                    End="-451.6,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -3660,6 +4923,263 @@ FROM            [ stgFudgemart_v3Customer]</property>
   &lt;/InputToColumnsCollection&gt;
   &lt;GeneratedComponentsIdentificationStrings&gt;
     &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
+  &lt;/GeneratedComponentsIdentificationStrings&gt;
+  &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
+  &lt;FailChangeAttribute&gt;false&lt;/FailChangeAttribute&gt;
+  &lt;UseStartEndDate&gt;false&lt;/UseStartEndDate&gt;
+  &lt;CurrentIndicatorColumn /&gt;
+  &lt;InferredIndicatorColumn /&gt;
+  &lt;ValueCurrent /&gt;
+  &lt;ValueExpired /&gt;
+  &lt;StartDateColumn /&gt;
+  &lt;EndDateColumn /&gt;
+  &lt;DateVariable /&gt;
+  &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
+&lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DF - Stage to FactOrderReviewsByState">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="235,42"
+          Id="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews"
+          TopLeft="512,90" />
+        <NodeLayout
+          Size="230,42"
+          Id="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState"
+          TopLeft="504,192" />
+        <EdgeLayout
+          Id="Package\DF - Stage to FactOrderReviewsByState.Paths[OLE DB Source Output]"
+          TopLeft="629.5,132">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-10.5,60"
+              Start="0,0"
+              End="-10.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="-4,30" />
+                  <mssgle:LineSegment
+                    End="-6.5,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-6.5,30"
+                    Point2="-10.5,30"
+                    Point3="-10.5,34" />
+                  <mssgle:LineSegment
+                    End="-10.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DF - Stage to DimSubs">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="192,42"
+          Id="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs"
+          TopLeft="216,5.5" />
+        <NodeLayout
+          Size="209,42"
+          Id="Package\DF - Stage to DimSubs\Slowly Changing Dimension"
+          TopLeft="207.5,107.5" />
+        <EdgeLayout
+          Id="Package\DF - Stage to DimSubs.Paths[OLE DB Source Output]"
+          TopLeft="312,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="163,42"
+          Id="Package\DF - Stage to DimSubs\Insert Destination"
+          TopLeft="5.50000000000006,209.5" />
+        <EdgeLayout
+          Id="Package\DF - Stage to DimSubs.Paths[New Output]"
+          TopLeft="278.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-191.5,60"
+              Start="0,0"
+              End="-191.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2735042735043" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2735042735043"
+                    Point2="0,24.2735042735043"
+                    Point3="-4,24.2735042735043" />
+                  <mssgle:LineSegment
+                    End="-187.5,24.2735042735043" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-187.5,24.2735042735043"
+                    Point2="-191.5,24.2735042735043"
+                    Point3="-191.5,28.2735042735043" />
+                  <mssgle:LineSegment
+                    End="-191.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-122.84138671875,29.2735042735043,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="166,42"
+          Id="Package\DF - Stage to DimSubs\OLE DB Command"
+          TopLeft="229,209.5" />
+        <EdgeLayout
+          Id="Package\DF - Stage to DimSubs.Paths[Changing Attribute Updates Output]"
+          TopLeft="345.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-33.5,60"
+              Start="0,0"
+              End="-33.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2735042735043" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2735042735043"
+                    Point2="0,24.2735042735043"
+                    Point3="-4,24.2735042735043" />
+                  <mssgle:LineSegment
+                    End="-29.5,24.2735042735043" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-29.5,24.2735042735043"
+                    Point2="-33.5,24.2735042735043"
+                    Point3="-33.5,28.2735042735043" />
+                  <mssgle:LineSegment
+                    End="-33.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-95.28390625,29.2735042735043,157.0678125,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Stage to DimSubs\Slowly Changing Dimension">
+    <Properties>
+      <Property>
+        <Name>SCDMetadata</Name>
+        <Value
+          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SCDWizardMetadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionID&gt;{1DA6CAD4-597D-446A-B449-3E6916D3EADD}&lt;/ConnectionID&gt;
+  &lt;TableName&gt;[fudgemart].[DimSubs]&lt;/TableName&gt;
+  &lt;InputToColumnsCollection&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC - Stage to DimSubs.Outputs[OLE DB Source Output].Columns[AccountID]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;AccountID&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC - Stage to DimSubs.Outputs[OLE DB Source Output].Columns[PlanName]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;PlanName&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC - Stage to DimSubs.Outputs[OLE DB Source Output].Columns[PlanPrice]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;PlanPrice&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC - Stage to DimSubs.Outputs[OLE DB Source Output].Columns[ZipState]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;ZipState&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+  &lt;/InputToColumnsCollection&gt;
+  &lt;GeneratedComponentsIdentificationStrings&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command&lt;/anyType&gt;
   &lt;/GeneratedComponentsIdentificationStrings&gt;
   &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
   &lt;FailChangeAttribute&gt;false&lt;/FailChangeAttribute&gt;
