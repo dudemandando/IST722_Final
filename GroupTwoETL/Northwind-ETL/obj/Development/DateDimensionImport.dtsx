@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DateDimensionImport"
   DTS:PackageType="5"
-  DTS:VersionBuild="11"
-  DTS:VersionGUID="{F00F1EB2-FC66-4F75-AC88-A62372518A57}">
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{A2014486-7B59-40AC-8065-27BCF4CDA1BC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -4578,35 +4578,21 @@
           Id="Package\DF - Load from stgDate to DimDate\DST -  Slowly Changing Dimension DimDate"
           TopLeft="169,209.5" />
         <NodeLayout
-          Size="175,42"
-          Id="Package\DF - Load from stgDate to DimDate\SRC - Stage stgDate"
-          TopLeft="224.5,5.5" />
+          Size="166,42"
+          Id="Package\DF - Load from stgDate to DimDate\OLE DB Command"
+          TopLeft="229,311.5" />
         <NodeLayout
           Size="156,42"
           Id="Package\DF - Load from stgDate to DimDate\Data Conversion"
           TopLeft="234,107.5" />
-        <EdgeLayout
-          Id="Package\DF - Load from stgDate to DimDate.Paths[Data Conversion Output]"
-          TopLeft="312,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="175,42"
+          Id="Package\DF - Load from stgDate to DimDate\SRC - Stage stgDate"
+          TopLeft="224.5,5.5" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\DF - Load from stgDate to DimDate\Insert Destination"
+          TopLeft="5.50000000000006,311.5" />
         <EdgeLayout
           Id="Package\DF - Load from stgDate to DimDate.Paths[OLE DB Source Output]"
           TopLeft="312,47.5">
@@ -4626,13 +4612,11 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="163,42"
-          Id="Package\DF - Load from stgDate to DimDate\Insert Destination"
-          TopLeft="5.50000000000006,311.5" />
         <EdgeLayout
           Id="Package\DF - Load from stgDate to DimDate.Paths[New Output]"
           TopLeft="265.666666666667,251.5">
@@ -4669,10 +4653,30 @@
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="166,42"
-          Id="Package\DF - Load from stgDate to DimDate\OLE DB Command"
-          TopLeft="229,311.5" />
+        <EdgeLayout
+          Id="Package\DF - Load from stgDate to DimDate.Paths[Data Conversion Output]"
+          TopLeft="312,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\DF - Load from stgDate to DimDate.Paths[Changing Attribute Updates Output]"
           TopLeft="358.333333333333,251.5">
@@ -4712,6 +4716,19 @@
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Load from stgDate to DimDate\Insert Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\DF - Load from stgDate to DimDate\DST -  Slowly Changing Dimension DimDate">
     <Properties>
@@ -5063,19 +5080,6 @@
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\DF - Load from stgDate to DimDate\SRC - Stage stgDate">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DF - Load from stgDate to DimDate\Insert Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
