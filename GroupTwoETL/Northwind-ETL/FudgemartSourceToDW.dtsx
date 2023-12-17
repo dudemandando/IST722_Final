@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="FudgemartSourceToDW"
   DTS:PackageType="5"
-  DTS:VersionBuild="20"
-  DTS:VersionGUID="{EA7F5E7F-331F-4570-8568-8871D9418CF0}">
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{D8FAC7C5-9E16-46AC-8C8F-8AD82D90637B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
