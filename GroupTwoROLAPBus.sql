@@ -305,6 +305,8 @@ DROP TABLE fudgemart.OrderReviewByState
 CREATE TABLE fudgemart.OrderReviewByState (
    [State]  varchar(50)   NOT NULL
 ,  [OrderCount]  int   NULL
+,  [MinReview]  int   NOT NULL
+,  [MaxReview]  int   NOT NULL
 ,  [AverageReview]  float   NULL
 ,  [TotalRetailRevenue]  money NOT  NULL
 ,  [TotalWholesaleCost]  money NOT  NULL
