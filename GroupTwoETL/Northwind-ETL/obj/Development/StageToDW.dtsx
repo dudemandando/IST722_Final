@@ -11,12 +11,328 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="StageToDW"
   DTS:PackageType="5"
-  DTS:VersionBuild="36"
-  DTS:VersionGUID="{256BAD4E-F676-4936-AF83-684B39191208}">
+  DTS:VersionBuild="38"
+  DTS:VersionGUID="{85A0B5AD-4B0A-4C94-87E1-A494E6CBF7A3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DF - FactOrderReviewsByState"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{2985FA99-3E2D-4575-A9AA-794411255684}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF - FactOrderReviewsByState"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DF - FactOrderReviewsByState\DST - FactOrderReviewsByState"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DST - FactOrderReviewsByState"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[fudgemart].[OrderReviewByState]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - FactOrderReviewsByState\DST - FactOrderReviewsByState.Connections[OleDbConnection]"
+                  connectionManagerID="{1DA6CAD4-597D-446A-B449-3E6916D3EADD}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.fudgemart]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF - FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF - FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].Columns[State]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="State"
+                      externalMetadataColumnId="Package\DF - FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                      lineageId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[State]" />
+                    <inputColumn
+                      refId="Package\DF - FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].Columns[TotalStateOrders]"
+                      cachedDataType="i4"
+                      cachedName="TotalStateOrders"
+                      externalMetadataColumnId="Package\DF - FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].ExternalColumns[OrderCount]"
+                      lineageId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[TotalStateOrders]" />
+                    <inputColumn
+                      refId="Package\DF - FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].Columns[AverageProductReview]"
+                      cachedDataType="i4"
+                      cachedName="AverageProductReview"
+                      externalMetadataColumnId="Package\DF - FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].ExternalColumns[AverageReview]"
+                      lineageId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[AverageProductReview]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF - FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\DF - FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].ExternalColumns[OrderCount]"
+                      dataType="i4"
+                      name="OrderCount" />
+                    <externalMetadataColumn
+                      refId="Package\DF - FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].ExternalColumns[AverageReview]"
+                      dataType="r8"
+                      name="AverageReview" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF - FactOrderReviewsByState\DST - FactOrderReviewsByState.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF - FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - FactOrderReviewsByState\DST - FactOrderReviewsByState.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - FactOrderReviewsByState\DST - FactOrderReviewsByState.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - FactOrderReviewsByState\DST - FactOrderReviewsByState.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - FactOrderReviewsByState\DST - FactOrderReviewsByState.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC - Stage Query OrderReviews"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select [fudgemart].[fudgemart].[DimCustomer].CustomerState as State,
+COUNT([fudgemart].[DimOrders].OrdersID) as TotalStateOrders,
+avg([fudgemart].[DimProductReview].ReviewStars) as AverageProductReview
+from [fudgemart].[fudgemart].[DimCustomer]
+join [fudgemart].[DimOrders] on [fudgemart].[fudgemart].[DimCustomer].CustomerID = [fudgemart].[DimOrders].CustomerID
+join [fudgemart].[DimProductReview] on [fudgemart].[fudgemart].[DimCustomer].[CustomerID] = [fudgemart].[DimProductReview].CustomerID
+group by [fudgemart].[fudgemart].[DimCustomer].CustomerState;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Connections[OleDbConnection]"
+                  connectionManagerID="{1DA6CAD4-597D-446A-B449-3E6916D3EADD}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.fudgemart]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                      length="2"
+                      lineageId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[State]"
+                      name="State"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[TotalStateOrders]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].ExternalColumns[TotalStateOrders]"
+                      lineageId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[TotalStateOrders]"
+                      name="TotalStateOrders"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[AverageProductReview]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].ExternalColumns[AverageProductReview]"
+                      lineageId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[AverageProductReview]"
+                      name="AverageProductReview"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].ExternalColumns[TotalStateOrders]"
+                      dataType="i4"
+                      name="TotalStateOrders" />
+                    <externalMetadataColumn
+                      refId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].ExternalColumns[AverageProductReview]"
+                      dataType="i4"
+                      name="AverageProductReview" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[State]"
+                      name="State" />
+                    <outputColumn
+                      refId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[TotalStateOrders]"
+                      dataType="i4"
+                      lineageId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[TotalStateOrders]"
+                      name="TotalStateOrders" />
+                    <outputColumn
+                      refId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[AverageProductReview]"
+                      dataType="i4"
+                      lineageId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[AverageProductReview]"
+                      name="AverageProductReview" />
+                    <outputColumn
+                      refId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF - FactOrderReviewsByState.Paths[OLE DB Source Output]"
+              endId="Package\DF - FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\DF - Stage DimOrders"
       DTS:CreationName="Microsoft.Pipeline"
@@ -3685,13 +4001,13 @@ FROM            [ stgFudgemart_v3Customer]</property>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\DF - Stage to FactOrderReviewsByState"
+      DTS:refId="Package\Fact SubsByState"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{2985FA99-3E2D-4575-A9AA-794411255684}"
+      DTS:DTSID="{C4F27E82-CBE7-4E5A-88F5-E04C3587F450}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="DF - Stage to FactOrderReviewsByState"
+      DTS:ObjectName="Fact SubsByState"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -3699,11 +4015,11 @@ FROM            [ stgFudgemart_v3Customer]</property>
           version="1">
           <components>
             <component
-              refId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState"
+              refId="Package\Fact SubsByState\DST - FactSubsByState"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
-              name="DST - FactOrderReviewsByState"
+              name="DST - FactSubsByState"
               usesDispositions="true"
               version="4">
               <properties>
@@ -3714,7 +4030,7 @@ FROM            [ stgFudgemart_v3Customer]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[fudgemart].[OrderReviewByState]</property>
+                  name="OpenRowset">[fudgemart].[SubsByState]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -3756,7 +4072,7 @@ FROM            [ stgFudgemart_v3Customer]</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Connections[OleDbConnection]"
+                  refId="Package\Fact SubsByState\DST - FactSubsByState.Connections[OleDbConnection]"
                   connectionManagerID="{1DA6CAD4-597D-446A-B449-3E6916D3EADD}:external"
                   connectionManagerRefId="Project.ConnectionManagers[localhost.fudgemart]"
                   description="The OLE DB runtime connection used to access the database."
@@ -3764,70 +4080,104 @@ FROM            [ stgFudgemart_v3Customer]</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input]"
+                  refId="Package\Fact SubsByState\DST - FactSubsByState.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].Columns[State]"
+                      refId="Package\Fact SubsByState\DST - FactSubsByState.Inputs[OLE DB Destination Input].Columns[State]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="2"
                       cachedName="State"
-                      externalMetadataColumnId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].ExternalColumns[State]"
-                      lineageId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[State]" />
+                      externalMetadataColumnId="Package\Fact SubsByState\DST - FactSubsByState.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                      lineageId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output].Columns[State]" />
                     <inputColumn
-                      refId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].Columns[TotalStateOrders]"
+                      refId="Package\Fact SubsByState\DST - FactSubsByState.Inputs[OLE DB Destination Input].Columns[BasicRentalPlusStreaming]"
                       cachedDataType="i4"
-                      cachedName="TotalStateOrders"
-                      externalMetadataColumnId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].ExternalColumns[OrderCount]"
-                      lineageId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[TotalStateOrders]" />
+                      cachedName="BasicRentalPlusStreaming"
+                      externalMetadataColumnId="Package\Fact SubsByState\DST - FactSubsByState.Inputs[OLE DB Destination Input].ExternalColumns[BasicRentalPlusStreaming]"
+                      lineageId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output].Columns[BasicRentalPlusStreaming]" />
                     <inputColumn
-                      refId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].Columns[AverageProductReview]"
+                      refId="Package\Fact SubsByState\DST - FactSubsByState.Inputs[OLE DB Destination Input].Columns[PremiumRental]"
                       cachedDataType="i4"
-                      cachedName="AverageProductReview"
-                      externalMetadataColumnId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].ExternalColumns[AverageReview]"
-                      lineageId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[AverageProductReview]" />
+                      cachedName="PremiumRental"
+                      externalMetadataColumnId="Package\Fact SubsByState\DST - FactSubsByState.Inputs[OLE DB Destination Input].ExternalColumns[PremiumRental]"
+                      lineageId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output].Columns[PremiumRental]" />
+                    <inputColumn
+                      refId="Package\Fact SubsByState\DST - FactSubsByState.Inputs[OLE DB Destination Input].Columns[PremiumRentalPlusStreaming]"
+                      cachedDataType="i4"
+                      cachedName="PremiumRentalPlusStreaming"
+                      externalMetadataColumnId="Package\Fact SubsByState\DST - FactSubsByState.Inputs[OLE DB Destination Input].ExternalColumns[PremiumRentalPlusStreaming]"
+                      lineageId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output].Columns[PremiumRentalPlusStreaming]" />
+                    <inputColumn
+                      refId="Package\Fact SubsByState\DST - FactSubsByState.Inputs[OLE DB Destination Input].Columns[StreamingOnly]"
+                      cachedDataType="i4"
+                      cachedName="StreamingOnly"
+                      externalMetadataColumnId="Package\Fact SubsByState\DST - FactSubsByState.Inputs[OLE DB Destination Input].ExternalColumns[StreamingOnly]"
+                      lineageId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output].Columns[StreamingOnly]" />
+                    <inputColumn
+                      refId="Package\Fact SubsByState\DST - FactSubsByState.Inputs[OLE DB Destination Input].Columns[SubscriptionCount]"
+                      cachedDataType="i4"
+                      cachedName="SubscriptionCount"
+                      externalMetadataColumnId="Package\Fact SubsByState\DST - FactSubsByState.Inputs[OLE DB Destination Input].ExternalColumns[SubscriptionCount]"
+                      lineageId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output].Columns[SubscriptionCount]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                      refId="Package\Fact SubsByState\DST - FactSubsByState.Inputs[OLE DB Destination Input].ExternalColumns[State]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="State" />
                     <externalMetadataColumn
-                      refId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].ExternalColumns[OrderCount]"
+                      refId="Package\Fact SubsByState\DST - FactSubsByState.Inputs[OLE DB Destination Input].ExternalColumns[SubscriptionCount]"
                       dataType="i4"
-                      name="OrderCount" />
+                      name="SubscriptionCount" />
                     <externalMetadataColumn
-                      refId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].ExternalColumns[AverageReview]"
-                      dataType="r8"
-                      name="AverageReview" />
+                      refId="Package\Fact SubsByState\DST - FactSubsByState.Inputs[OLE DB Destination Input].ExternalColumns[BasicRental]"
+                      dataType="i4"
+                      name="BasicRental" />
+                    <externalMetadataColumn
+                      refId="Package\Fact SubsByState\DST - FactSubsByState.Inputs[OLE DB Destination Input].ExternalColumns[BasicRentalPlusStreaming]"
+                      dataType="i4"
+                      name="BasicRentalPlusStreaming" />
+                    <externalMetadataColumn
+                      refId="Package\Fact SubsByState\DST - FactSubsByState.Inputs[OLE DB Destination Input].ExternalColumns[PremiumRental]"
+                      dataType="i4"
+                      name="PremiumRental" />
+                    <externalMetadataColumn
+                      refId="Package\Fact SubsByState\DST - FactSubsByState.Inputs[OLE DB Destination Input].ExternalColumns[PremiumRentalPlusStreaming]"
+                      dataType="i4"
+                      name="PremiumRentalPlusStreaming" />
+                    <externalMetadataColumn
+                      refId="Package\Fact SubsByState\DST - FactSubsByState.Inputs[OLE DB Destination Input].ExternalColumns[StreamingOnly]"
+                      dataType="i4"
+                      name="StreamingOnly" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Fact SubsByState\DST - FactSubsByState.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\Fact SubsByState\DST - FactSubsByState.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Fact SubsByState\DST - FactSubsByState.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Fact SubsByState\DST - FactSubsByState.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Fact SubsByState\DST - FactSubsByState.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Fact SubsByState\DST - FactSubsByState.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -3836,11 +4186,11 @@ FROM            [ stgFudgemart_v3Customer]</property>
               </outputs>
             </component>
             <component
-              refId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews"
+              refId="Package\Fact SubsByState\SRC - DimSubs"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               description="OLE DB Source"
-              name="SRC - Stage Query OrderReviews"
+              name="SRC - DimSubs"
               usesDispositions="true"
               version="7">
               <properties>
@@ -3851,7 +4201,7 @@ FROM            [ stgFudgemart_v3Customer]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset"></property>
+                  name="OpenRowset">[fudgemart].[DimSubs]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -3860,13 +4210,12 @@ FROM            [ stgFudgemart_v3Customer]</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select [fudgemart].[fudgemart].[DimCustomer].CustomerState as State,
-COUNT([fudgemart].[DimOrders].OrdersID) as TotalStateOrders,
-avg([fudgemart].[DimProductReview].ReviewStars) as AverageProductReview
-from [fudgemart].[fudgemart].[DimCustomer]
-join [fudgemart].[DimOrders] on [fudgemart].[fudgemart].[DimCustomer].CustomerID = [fudgemart].[DimOrders].CustomerID
-join [fudgemart].[DimProductReview] on [fudgemart].[fudgemart].[DimCustomer].[CustomerID] = [fudgemart].[DimProductReview].CustomerID
-group by [fudgemart].[fudgemart].[DimCustomer].CustomerState;</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        ZipState AS State, COUNT(CASE WHEN PlanName = 'Basic Rental' THEN 1 END) AS [Basic Rental], COUNT(CASE WHEN PlanName = 'Basic Rental + Streaming' THEN 1 END) AS BasicRentalPlusStreaming, 
+                         COUNT(CASE WHEN PlanName = 'Premium Rental' THEN 1 END) AS PremiumRental, COUNT(CASE WHEN PlanName = 'Premium Rental + Streaming' THEN 1 END) AS PremiumRentalPlusStreaming, 
+                         COUNT(CASE WHEN PlanName = 'Streaming Only' THEN 1 END) AS StreamingOnly, COUNT(CASE WHEN PlanName IN ('Basic Rental', 'Basic Rental + Streaming', 'Premium Rental', 'Premium Rental + Streaming', 
+                         'Streaming Only') THEN 1 END) AS SubscriptionCount
+FROM            fudgemart.DimSubs
+GROUP BY ZipState</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -3891,7 +4240,7 @@ group by [fudgemart].[fudgemart].[DimCustomer].CustomerState;</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Connections[OleDbConnection]"
+                  refId="Package\Fact SubsByState\SRC - DimSubs.Connections[OleDbConnection]"
                   connectionManagerID="{1DA6CAD4-597D-446A-B449-3E6916D3EADD}:external"
                   connectionManagerRefId="Project.ConnectionManagers[localhost.fudgemart]"
                   description="The OLE DB runtime connection used to access the database."
@@ -3899,89 +4248,161 @@ group by [fudgemart].[fudgemart].[DimCustomer].CustomerState;</property>
               </connections>
               <outputs>
                 <output
-                  refId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output]"
+                  refId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[State]"
+                      refId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output].Columns[State]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                      externalMetadataColumnId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output].ExternalColumns[State]"
                       length="2"
-                      lineageId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[State]"
+                      lineageId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output].Columns[State]"
                       name="State"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[TotalStateOrders]"
+                      refId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output].Columns[Basic Rental]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].ExternalColumns[TotalStateOrders]"
-                      lineageId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[TotalStateOrders]"
-                      name="TotalStateOrders"
+                      externalMetadataColumnId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output].ExternalColumns[Basic Rental]"
+                      lineageId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output].Columns[Basic Rental]"
+                      name="Basic Rental"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[AverageProductReview]"
+                      refId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output].Columns[BasicRentalPlusStreaming]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].ExternalColumns[AverageProductReview]"
-                      lineageId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[AverageProductReview]"
-                      name="AverageProductReview"
+                      externalMetadataColumnId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output].ExternalColumns[BasicRentalPlusStreaming]"
+                      lineageId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output].Columns[BasicRentalPlusStreaming]"
+                      name="BasicRentalPlusStreaming"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output].Columns[PremiumRental]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output].ExternalColumns[PremiumRental]"
+                      lineageId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output].Columns[PremiumRental]"
+                      name="PremiumRental"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output].Columns[PremiumRentalPlusStreaming]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output].ExternalColumns[PremiumRentalPlusStreaming]"
+                      lineageId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output].Columns[PremiumRentalPlusStreaming]"
+                      name="PremiumRentalPlusStreaming"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output].Columns[StreamingOnly]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output].ExternalColumns[StreamingOnly]"
+                      lineageId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output].Columns[StreamingOnly]"
+                      name="StreamingOnly"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output].Columns[SubscriptionCount]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output].ExternalColumns[SubscriptionCount]"
+                      lineageId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output].Columns[SubscriptionCount]"
+                      name="SubscriptionCount"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                      refId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output].ExternalColumns[State]"
                       codePage="1252"
                       dataType="str"
-                      length="25"
+                      length="2"
                       name="State" />
                     <externalMetadataColumn
-                      refId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].ExternalColumns[TotalStateOrders]"
+                      refId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output].ExternalColumns[Basic Rental]"
                       dataType="i4"
-                      name="TotalStateOrders" />
+                      name="Basic Rental" />
                     <externalMetadataColumn
-                      refId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].ExternalColumns[AverageProductReview]"
+                      refId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output].ExternalColumns[BasicRentalPlusStreaming]"
                       dataType="i4"
-                      name="AverageProductReview" />
+                      name="BasicRentalPlusStreaming" />
+                    <externalMetadataColumn
+                      refId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output].ExternalColumns[PremiumRental]"
+                      dataType="i4"
+                      name="PremiumRental" />
+                    <externalMetadataColumn
+                      refId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output].ExternalColumns[PremiumRentalPlusStreaming]"
+                      dataType="i4"
+                      name="PremiumRentalPlusStreaming" />
+                    <externalMetadataColumn
+                      refId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output].ExternalColumns[StreamingOnly]"
+                      dataType="i4"
+                      name="StreamingOnly" />
+                    <externalMetadataColumn
+                      refId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output].ExternalColumns[SubscriptionCount]"
+                      dataType="i4"
+                      name="SubscriptionCount" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output]"
+                  refId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[State]"
+                      refId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Error Output].Columns[State]"
                       codePage="1252"
                       dataType="str"
-                      length="25"
-                      lineageId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[State]"
+                      length="2"
+                      lineageId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Error Output].Columns[State]"
                       name="State" />
                     <outputColumn
-                      refId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[TotalStateOrders]"
+                      refId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Error Output].Columns[Basic Rental]"
                       dataType="i4"
-                      lineageId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[TotalStateOrders]"
-                      name="TotalStateOrders" />
+                      lineageId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Error Output].Columns[Basic Rental]"
+                      name="Basic Rental" />
                     <outputColumn
-                      refId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[AverageProductReview]"
+                      refId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Error Output].Columns[BasicRentalPlusStreaming]"
                       dataType="i4"
-                      lineageId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[AverageProductReview]"
-                      name="AverageProductReview" />
+                      lineageId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Error Output].Columns[BasicRentalPlusStreaming]"
+                      name="BasicRentalPlusStreaming" />
                     <outputColumn
-                      refId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Error Output].Columns[PremiumRental]"
                       dataType="i4"
-                      lineageId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Error Output].Columns[PremiumRental]"
+                      name="PremiumRental" />
+                    <outputColumn
+                      refId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Error Output].Columns[PremiumRentalPlusStreaming]"
+                      dataType="i4"
+                      lineageId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Error Output].Columns[PremiumRentalPlusStreaming]"
+                      name="PremiumRentalPlusStreaming" />
+                    <outputColumn
+                      refId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Error Output].Columns[StreamingOnly]"
+                      dataType="i4"
+                      lineageId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Error Output].Columns[StreamingOnly]"
+                      name="StreamingOnly" />
+                    <outputColumn
+                      refId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Error Output].Columns[SubscriptionCount]"
+                      dataType="i4"
+                      lineageId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Error Output].Columns[SubscriptionCount]"
+                      name="SubscriptionCount" />
+                    <outputColumn
+                      refId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -3992,10 +4413,10 @@ group by [fudgemart].[fudgemart].[DimCustomer].CustomerState;</property>
           </components>
           <paths>
             <path
-              refId="Package\DF - Stage to FactOrderReviewsByState.Paths[OLE DB Source Output]"
-              endId="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input]"
+              refId="Package\Fact SubsByState.Paths[OLE DB Source Output]"
+              endId="Package\Fact SubsByState\DST - FactSubsByState.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
-              startId="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output]" />
+              startId="Package\Fact SubsByState\SRC - DimSubs.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -4009,7 +4430,7 @@ group by [fudgemart].[fudgemart].[DimCustomer].CustomerState;</property>
       DTS:From="Package\DF - Stage to DimCustomer"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
-      DTS:To="Package\DF - Stage to FactOrderReviewsByState" />
+      DTS:To="Package\DF - FactOrderReviewsByState" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
@@ -4017,7 +4438,7 @@ group by [fudgemart].[fudgemart].[DimCustomer].CustomerState;</property>
       DTS:From="Package\DF - Stage DimOrders"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
-      DTS:To="Package\DF - Stage to FactOrderReviewsByState" />
+      DTS:To="Package\DF - FactOrderReviewsByState" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
@@ -4025,7 +4446,7 @@ group by [fudgemart].[fudgemart].[DimCustomer].CustomerState;</property>
       DTS:From="Package\DF - Stage to DimProductReview"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
-      DTS:To="Package\DF - Stage to FactOrderReviewsByState" />
+      DTS:To="Package\DF - FactOrderReviewsByState" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
       DTS:CreationName=""
@@ -4033,7 +4454,7 @@ group by [fudgemart].[fudgemart].[DimCustomer].CustomerState;</property>
       DTS:From="Package\DF - Stage to DimProduct"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 3"
-      DTS:To="Package\DF - Stage to FactOrderReviewsByState" />
+      DTS:To="Package\DF - FactOrderReviewsByState" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
       DTS:CreationName=""
@@ -4041,7 +4462,15 @@ group by [fudgemart].[fudgemart].[DimCustomer].CustomerState;</property>
       DTS:From="Package\DF - Stage to DimSubs"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 4"
-      DTS:To="Package\DF - Stage to FactOrderReviewsByState" />
+      DTS:To="Package\DF - FactOrderReviewsByState" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{D973E2C4-B7DB-4323-85A3-277883A980E9}"
+      DTS:From="Package\DF - FactOrderReviewsByState"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\Fact SubsByState" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -4056,6 +4485,14 @@ group by [fudgemart].[fudgemart].[DimCustomer].CustomerState;</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="223,42"
+          Id="Package\DF - FactOrderReviewsByState"
+          TopLeft="387,229" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\DF - Stage DimOrders"
+          TopLeft="377,94" />
+        <NodeLayout
           Size="209,42"
           Id="Package\DF - Stage to DimCustomer"
           TopLeft="83,96" />
@@ -4064,43 +4501,43 @@ group by [fudgemart].[fudgemart].[DimCustomer].CustomerState;</property>
           Id="Package\DF - Stage to DimProduct"
           TopLeft="5,209" />
         <NodeLayout
-          Size="182,42"
-          Id="Package\DF - Stage DimOrders"
-          TopLeft="377,94" />
-        <NodeLayout
           Size="233,42"
           Id="Package\DF - Stage to DimProductReview"
           TopLeft="618,103" />
         <NodeLayout
-          Size="266,42"
-          Id="Package\DF - Stage to FactOrderReviewsByState"
-          TopLeft="387,229" />
+          Size="186,42"
+          Id="Package\DF - Stage to DimSubs"
+          TopLeft="956,159" />
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Fact SubsByState"
+          TopLeft="448,313" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="187.5,138">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="255.1,91"
+              EndConnector="246.5,91"
               Start="0,0"
-              End="255.1,83.5">
+              End="246.5,83.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,60.1728525980912" />
+                    End="0,60.0157728706625" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,60.1728525980912"
-                    Point2="0,64.1728525980912"
-                    Point3="4,64.1728525980912" />
+                    Point1="0,60.0157728706625"
+                    Point2="0,64.0157728706625"
+                    Point3="4,64.0157728706625" />
                   <mssgle:LineSegment
-                    End="251.1,64.1728525980912" />
+                    End="242.5,64.0157728706625" />
                   <mssgle:CubicBezierSegment
-                    Point1="251.1,64.1728525980912"
-                    Point2="255.1,64.1728525980912"
-                    Point3="255.1,68.1728525980912" />
+                    Point1="242.5,64.0157728706625"
+                    Point2="246.5,64.0157728706625"
+                    Point3="246.5,68.0157728706625" />
                   <mssgle:LineSegment
-                    End="255.1,83.5" />
+                    End="246.5,83.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4115,26 +4552,26 @@ group by [fudgemart].[fudgemart].[DimCustomer].CustomerState;</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="26.2,93"
+              EndConnector="9,93"
               Start="0,0"
-              End="26.2,85.5">
+              End="9,85.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,47.4945878434638" />
+                    End="0,47.4615384615385" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,47.4945878434638"
-                    Point2="0,51.4945878434638"
-                    Point3="4,51.4945878434638" />
+                    Point1="0,47.4615384615385"
+                    Point2="0,51.4615384615385"
+                    Point3="4,51.4615384615385" />
                   <mssgle:LineSegment
-                    End="22.2,51.4945878434638" />
+                    End="5,51.4615384615385" />
                   <mssgle:CubicBezierSegment
-                    Point1="22.2,51.4945878434638"
-                    Point2="26.2,51.4945878434638"
-                    Point3="26.2,55.4945878434638" />
+                    Point1="5,51.4615384615385"
+                    Point2="9,51.4615384615385"
+                    Point3="9,55.4615384615385" />
                   <mssgle:LineSegment
-                    End="26.2,85.5" />
+                    End="9,85.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4149,26 +4586,26 @@ group by [fudgemart].[fudgemart].[DimCustomer].CustomerState;</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-188.7,84"
+              EndConnector="-214.5,84"
               Start="0,0"
-              End="-188.7,76.5">
+              End="-214.5,76.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,42.511240632806" />
+                    End="0,42.4813895781638" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,42.511240632806"
-                    Point2="0,46.511240632806"
-                    Point3="-4,46.511240632806" />
+                    Point1="0,42.4813895781638"
+                    Point2="0,46.4813895781638"
+                    Point3="-4,46.4813895781638" />
                   <mssgle:LineSegment
-                    End="-184.7,46.511240632806" />
+                    End="-210.5,46.4813895781638" />
                   <mssgle:CubicBezierSegment
-                    Point1="-184.7,46.511240632806"
-                    Point2="-188.7,46.511240632806"
-                    Point3="-188.7,50.511240632806" />
+                    Point1="-210.5,46.4813895781638"
+                    Point2="-214.5,46.4813895781638"
+                    Point3="-214.5,50.4813895781638" />
                   <mssgle:LineSegment
-                    End="-188.7,76.5" />
+                    End="-214.5,76.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4211,36 +4648,66 @@ group by [fudgemart].[fudgemart].[DimCustomer].CustomerState;</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="186,42"
-          Id="Package\DF - Stage to DimSubs"
-          TopLeft="956,159" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
           TopLeft="1049,201">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-451.6,28"
+              EndConnector="-486,28"
               Start="0,0"
-              End="-451.6,20.5">
+              End="-486,20.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,15.745493107105" />
+                    End="0,15.6971608832808" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,15.745493107105"
-                    Point2="0,19.745493107105"
-                    Point3="-4,19.745493107105" />
+                    Point1="0,15.6971608832808"
+                    Point2="0,19.6971608832808"
+                    Point3="-4,19.6971608832808" />
                   <mssgle:LineSegment
-                    End="-447.6,19.745493107105" />
+                    End="-482,19.6971608832808" />
                   <mssgle:CubicBezierSegment
-                    Point1="-447.6,19.745493107105"
-                    Point2="-451.6,19.745493107105"
-                    Point3="-451.6,23.745493107105" />
+                    Point1="-482,19.6971608832808"
+                    Point2="-486,19.6971608832808"
+                    Point3="-486,23.6971608832808" />
                   <mssgle:LineSegment
-                    End="-451.6,20.5" />
+                    End="-486,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="498.5,271">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="29.5,42"
+              Start="0,0"
+              End="29.5,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17"
+                    Point2="0,21"
+                    Point3="4,21" />
+                  <mssgle:LineSegment
+                    End="25.5,21" />
+                  <mssgle:CubicBezierSegment
+                    Point1="25.5,21"
+                    Point2="29.5,21"
+                    Point3="29.5,25" />
+                  <mssgle:LineSegment
+                    End="29.5,34.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4252,6 +4719,216 @@ group by [fudgemart].[fudgemart].[DimCustomer].CustomerState;</property>
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <TaskHost
+    design-time-name="Package\DF - FactOrderReviewsByState">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="235,42"
+          Id="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews"
+          TopLeft="512,90" />
+        <NodeLayout
+          Size="230,42"
+          Id="Package\DF - FactOrderReviewsByState\DST - FactOrderReviewsByState"
+          TopLeft="504,192" />
+        <EdgeLayout
+          Id="Package\DF - FactOrderReviewsByState.Paths[OLE DB Source Output]"
+          TopLeft="629.5,132">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-10.5,60"
+              Start="0,0"
+              End="-10.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="-4,30" />
+                  <mssgle:LineSegment
+                    End="-6.5,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-6.5,30"
+                    Point2="-10.5,30"
+                    Point3="-10.5,34" />
+                  <mssgle:LineSegment
+                    End="-10.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - FactOrderReviewsByState\DST - FactOrderReviewsByState">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DF - Stage DimOrders">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="170,42"
+          Id="Package\DF - Stage DimOrders\SRC - Stage Orders"
+          TopLeft="25,5.5" />
+        <NodeLayout
+          Size="209,42"
+          Id="Package\DF - Stage DimOrders\Slowly Changing Dimension"
+          TopLeft="5.50000000000003,107.5" />
+        <EdgeLayout
+          Id="Package\DF - Stage DimOrders.Paths[OLE DB Source Output]"
+          TopLeft="110,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="163,42"
+          Id="Package\DF - Stage DimOrders\Insert Destination"
+          TopLeft="28.5,209.5" />
+        <EdgeLayout
+          Id="Package\DF - Stage DimOrders.Paths[New Output]"
+          TopLeft="110,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-27.09138671875,20.533203125,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Stage DimOrders\SRC - Stage Orders">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Stage DimOrders\Slowly Changing Dimension">
+    <Properties>
+      <Property>
+        <Name>SCDMetadata</Name>
+        <Value
+          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SCDWizardMetadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionID&gt;{1DA6CAD4-597D-446A-B449-3E6916D3EADD}&lt;/ConnectionID&gt;
+  &lt;TableName&gt;[fudgemart].[DimOrders]&lt;/TableName&gt;
+  &lt;InputToColumnsCollection&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC - Stage Orders.Outputs[OLE DB Source Output].Columns[customer_id]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;CustomerID&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC - Stage Orders.Outputs[OLE DB Source Output].Columns[customer_zip]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;CustomerZip&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC - Stage Orders.Outputs[OLE DB Source Output].Columns[order_date]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;OrderDate&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC - Stage Orders.Outputs[OLE DB Source Output].Columns[order_id]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;OrdersID&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC - Stage Orders.Outputs[OLE DB Source Output].Columns[shipped_date]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Shipped date&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+  &lt;/InputToColumnsCollection&gt;
+  &lt;GeneratedComponentsIdentificationStrings&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
+  &lt;/GeneratedComponentsIdentificationStrings&gt;
+  &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
+  &lt;FailChangeAttribute&gt;false&lt;/FailChangeAttribute&gt;
+  &lt;UseStartEndDate&gt;false&lt;/UseStartEndDate&gt;
+  &lt;CurrentIndicatorColumn /&gt;
+  &lt;InferredIndicatorColumn /&gt;
+  &lt;ValueCurrent /&gt;
+  &lt;ValueExpired /&gt;
+  &lt;StartDateColumn /&gt;
+  &lt;EndDateColumn /&gt;
+  &lt;DateVariable /&gt;
+  &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
+&lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\DF - Stage to DimCustomer">
     <LayoutInfo>
@@ -4371,19 +5048,6 @@ group by [fudgemart].[fudgemart].[DimCustomer].CustomerState;</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DF - Stage to DimCustomer\SRC - Customer">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\DF - Stage to DimCustomer\Slowly Changing Dimension">
     <Properties>
       <Property>
@@ -4453,6 +5117,19 @@ group by [fudgemart].[fudgemart].[DimCustomer].CustomerState;</property>
   &lt;DateVariable /&gt;
   &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
 &lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Stage to DimCustomer\SRC - Customer">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -4668,145 +5345,6 @@ group by [fudgemart].[fudgemart].[DimCustomer].CustomerState;</property>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\DF - Stage DimOrders">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="170,42"
-          Id="Package\DF - Stage DimOrders\SRC - Stage Orders"
-          TopLeft="25,5.5" />
-        <NodeLayout
-          Size="209,42"
-          Id="Package\DF - Stage DimOrders\Slowly Changing Dimension"
-          TopLeft="5.50000000000003,107.5" />
-        <EdgeLayout
-          Id="Package\DF - Stage DimOrders.Paths[OLE DB Source Output]"
-          TopLeft="110,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="163,42"
-          Id="Package\DF - Stage DimOrders\Insert Destination"
-          TopLeft="28.5,209.5" />
-        <EdgeLayout
-          Id="Package\DF - Stage DimOrders.Paths[New Output]"
-          TopLeft="110,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-27.09138671875,20.533203125,54.1827734375,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\DF - Stage DimOrders\SRC - Stage Orders">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DF - Stage DimOrders\Slowly Changing Dimension">
-    <Properties>
-      <Property>
-        <Name>SCDMetadata</Name>
-        <Value
-          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SCDWizardMetadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionID&gt;{1DA6CAD4-597D-446A-B449-3E6916D3EADD}&lt;/ConnectionID&gt;
-  &lt;TableName&gt;[fudgemart].[DimOrders]&lt;/TableName&gt;
-  &lt;InputToColumnsCollection&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC - Stage Orders.Outputs[OLE DB Source Output].Columns[customer_id]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;CustomerID&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC - Stage Orders.Outputs[OLE DB Source Output].Columns[customer_zip]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;CustomerZip&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC - Stage Orders.Outputs[OLE DB Source Output].Columns[order_date]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;OrderDate&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC - Stage Orders.Outputs[OLE DB Source Output].Columns[order_id]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;OrdersID&lt;/ColumnName&gt;
-      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
-      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC - Stage Orders.Outputs[OLE DB Source Output].Columns[shipped_date]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;Shipped date&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-  &lt;/InputToColumnsCollection&gt;
-  &lt;GeneratedComponentsIdentificationStrings&gt;
-    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
-  &lt;/GeneratedComponentsIdentificationStrings&gt;
-  &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
-  &lt;FailChangeAttribute&gt;false&lt;/FailChangeAttribute&gt;
-  &lt;UseStartEndDate&gt;false&lt;/UseStartEndDate&gt;
-  &lt;CurrentIndicatorColumn /&gt;
-  &lt;InferredIndicatorColumn /&gt;
-  &lt;ValueCurrent /&gt;
-  &lt;ValueExpired /&gt;
-  &lt;StartDateColumn /&gt;
-  &lt;EndDateColumn /&gt;
-  &lt;DateVariable /&gt;
-  &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
-&lt;/SCDWizardMetadata&gt;</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
     design-time-name="Package\DF - Stage to DimProductReview">
     <LayoutInfo>
       <GraphLayout
@@ -4940,77 +5478,6 @@ group by [fudgemart].[fudgemart].[DimCustomer].CustomerState;</property>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\DF - Stage to FactOrderReviewsByState">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="235,42"
-          Id="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews"
-          TopLeft="512,90" />
-        <NodeLayout
-          Size="230,42"
-          Id="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState"
-          TopLeft="504,192" />
-        <EdgeLayout
-          Id="Package\DF - Stage to FactOrderReviewsByState.Paths[OLE DB Source Output]"
-          TopLeft="629.5,132">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-10.5,60"
-              Start="0,0"
-              End="-10.5,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26"
-                    Point2="0,30"
-                    Point3="-4,30" />
-                  <mssgle:LineSegment
-                    End="-6.5,30" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-6.5,30"
-                    Point2="-10.5,30"
-                    Point3="-10.5,34" />
-                  <mssgle:LineSegment
-                    End="-10.5,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\DF - Stage to FactOrderReviewsByState\SRC - Stage Query OrderReviews">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DF - Stage to FactOrderReviewsByState\DST - FactOrderReviewsByState">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
     design-time-name="Package\DF - Stage to DimSubs">
     <LayoutInfo>
       <GraphLayout
@@ -5129,19 +5596,6 @@ group by [fudgemart].[fudgemart].[DimCustomer].CustomerState;</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\DF - Stage to DimSubs\Slowly Changing Dimension">
     <Properties>
       <Property>
@@ -5193,6 +5647,83 @@ group by [fudgemart].[fudgemart].[DimCustomer].CustomerState;</property>
   &lt;DateVariable /&gt;
   &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
 &lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Stage to DimSubs\SRC - Stage to DimSubs">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Fact SubsByState">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Fact SubsByState\SRC - DimSubs"
+          TopLeft="486,82" />
+        <NodeLayout
+          Size="187,42"
+          Id="Package\Fact SubsByState\DST - FactSubsByState"
+          TopLeft="466,181" />
+        <EdgeLayout
+          Id="Package\Fact SubsByState.Paths[OLE DB Source Output]"
+          TopLeft="560.25,124">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57"
+              Start="0,0"
+              End="0,49.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Fact SubsByState\DST - FactSubsByState">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Fact SubsByState\SRC - DimSubs">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
