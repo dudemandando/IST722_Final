@@ -165,6 +165,8 @@ CREATE TABLE fudgemart.DimOrders (
 ,  [OrderDate]  datetime   NOT NULL
 ,  [Shipped date]  datetime   NOT NULL
 ,  [CustomerZip]  varchar(20)   NOT NULL
+,  [TotalRetail]  money   NOT NULL
+,  [TotalWholesale]  money   NOT NULL
 , CONSTRAINT [PK_fudgemart.DimOrders] PRIMARY KEY CLUSTERED 
 ( [OrderKey] )
 ) ON [PRIMARY]
@@ -174,8 +176,8 @@ CREATE TABLE fudgemart.DimOrders (
 
 SET IDENTITY_INSERT fudgemart.DimOrders ON
 ;
-INSERT INTO fudgemart.DimOrders (OrderKey, OrdersID, CustomerID, OrderDate, [Shipped date], CustomerZip)
-VALUES (-1, -1, -1, '', '', -1)
+INSERT INTO fudgemart.DimOrders (OrderKey, OrdersID, CustomerID, OrderDate, [Shipped date], CustomerZip, [TotalRetail], [TotalWholesale])
+VALUES (-1, -1, -1, '', '', -1, 0, 0)
 ;
 SET IDENTITY_INSERT fudgemart.DimOrders OFF
 ;
@@ -304,6 +306,9 @@ CREATE TABLE fudgemart.OrderReviewByState (
    [State]  varchar(50)   NOT NULL
 ,  [OrderCount]  int   NULL
 ,  [AverageReview]  float   NULL
+,  [TotalRetailRevenue]  money NOT  NULL
+,  [TotalWholesaleCost]  money NOT  NULL
+,  [RevenueWholesaleDifference]  money NOT  NULL
 ) ON [PRIMARY]
 ;
 
