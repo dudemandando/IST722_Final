@@ -2,7 +2,7 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>GroupTwoETL</Name>
-    <LastWriteTime>2023-12-16T20:52:35.8257502Z</LastWriteTime>
+    <LastWriteTime>2023-12-17T01:05:39.5810452Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
@@ -43,12 +43,17 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>StageToDW.dtsx</Name>
-      <LastWriteTime>2023-12-17T00:37:01.0877632Z</LastWriteTime>
+      <LastWriteTime>2023-12-17T01:00:41.5634072Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>SubsDimensionImport.dtsx</Name>
       <LastWriteTime>2023-12-16T20:52:42.0306524Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>FudgemartSourceToDW.dtsx</Name>
+      <LastWriteTime>2023-12-17T01:06:24.3351016Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

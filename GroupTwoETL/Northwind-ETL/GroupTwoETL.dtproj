@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">lab000001</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAi21YKBv/5EqzmM3lGVBG8QAAAAACAAAAAAAQZgAAAAEAACAAAADs5RReQwcHuyjHkyxPbryG0kryZ8/N3bPdvduvaJImSgAAAAAOgAAAAAIAACAAAAA2mWt6ojduQgD+3oh+TQVfC7xKtgYJQ/BBf8bnS2w85JAAAAB5kxZO+mTViOz7lDWBXhSzRcPfwJoviXNFtXlRfJ9z+qeJZ57Ib+5Vo8Nr9KO/MC4pDTvXec/bLG8KmlxAjVwXnwSt5HAh05ylJEz2T3yp/tXgf31KFcPfD0pCX4mqfWWxGRNqHaRJUIsw1NRMc6CLxJM3CoqvwWVHL+8uKlx+A+u1BmzGw8RWuc/jGxb27ndAAAAATsokyZypG+j4iVeCmhPEkLl74xwEV1n7DrELfXy9kPFc1Bzy3dNWSRsGfuOw5IxWymD6mbqMlX1VFN+8gnRRgQ==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAi21YKBv/5EqzmM3lGVBG8QAAAAACAAAAAAAQZgAAAAEAACAAAABbWvrEC6wdTSraom6AOLtEzPJBQczB0D8iLefL4AO+/QAAAAAOgAAAAAIAACAAAACa5BjlXuqZG71aRiKo4uc1odXbcXkLiqMVbEQg9kF28pAAAABoMcKAEtsLEHTEzi8K7pFyBGEpdqwaO5EiPbh9GIN8u8IWnQTNX7owIFxoQmVT0IX6sWj5HjBi5idfwGFTC0qQncRh9SSdbIKxSt8RbEdIPGhx3Nh2PAnxSPrMfchQkSK7LFESmZ7faM9L3ot2ZqIrQCzkyyeEOhP/Er7F4eYIT0lXDBMZ9b9uj39V4eEShAdAAAAA7IH/DH7jDo9qZOHMpLEb9LEWSidVgdXVIZP6Zva2flKppXGVjGlfh6J2ZGE2Ndptg6+vdlaCdUylPF0m4gK4gg==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -39,6 +39,7 @@
           <SSIS:Package SSIS:Name="SubsByStateFactImport.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="StageToDW.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="SubsDimensionImport.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="FudgemartSourceToDW.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="localhost.ExternalSources2.conmgr" />
@@ -870,10 +871,10 @@
                 <SSIS:Property SSIS:Name="Name">CustomerDimensionImport</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">14</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">16</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{67EF07DB-C3B3-4527-8341-3A916311E6C5}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{3D66AE4F-0262-48A6-BEFC-A79AD85BC9DA}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -972,10 +973,10 @@
                 <SSIS:Property SSIS:Name="Name">StageToDW</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">30</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">44</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{596062B9-B1CF-4BC4-87DC-DBB89D243542}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{B2D9ABA5-36B0-40D4-A77C-4AEF66CF47B9}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -993,6 +994,23 @@
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionGUID">{40E80776-7397-4320-BACA-D3A7935EA606}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="FudgemartSourceToDW.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{B6B0CC84-44B8-412D-B06B-21C38874865D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">FudgemartSourceToDW</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{D07AEF2D-0AD4-481E-82AE-46183659B362}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
