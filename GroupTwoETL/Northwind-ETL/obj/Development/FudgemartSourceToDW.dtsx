@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="FudgemartSourceToDW"
   DTS:PackageType="5"
-  DTS:VersionBuild="20"
-  DTS:VersionGUID="{EA7F5E7F-331F-4570-8568-8871D9418CF0}">
+  DTS:VersionBuild="22"
+  DTS:VersionGUID="{87155CEA-7E74-42B0-8A84-4B51D6914F50}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -614,6 +614,18 @@ FROM            fm_customers</property>
                       cachedName="RevenueWholesaleDifference"
                       externalMetadataColumnId="Package\DF - FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].ExternalColumns[RevenueWholesaleDifference]"
                       lineageId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[RevenueWholesaleDifference]" />
+                    <inputColumn
+                      refId="Package\DF - FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].Columns[MinReview]"
+                      cachedDataType="i4"
+                      cachedName="MinReview"
+                      externalMetadataColumnId="Package\DF - FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].ExternalColumns[MinReview]"
+                      lineageId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[MinReview]" />
+                    <inputColumn
+                      refId="Package\DF - FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].Columns[MaxReview]"
+                      cachedDataType="i4"
+                      cachedName="MaxReview"
+                      externalMetadataColumnId="Package\DF - FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].ExternalColumns[MaxReview]"
+                      lineageId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[MaxReview]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -643,6 +655,14 @@ FROM            fm_customers</property>
                       refId="Package\DF - FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].ExternalColumns[RevenueWholesaleDifference]"
                       dataType="cy"
                       name="RevenueWholesaleDifference" />
+                    <externalMetadataColumn
+                      refId="Package\DF - FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].ExternalColumns[MinReview]"
+                      dataType="i4"
+                      name="MinReview" />
+                    <externalMetadataColumn
+                      refId="Package\DF - FactOrderReviewsByState\DST - FactOrderReviewsByState.Inputs[OLE DB Destination Input].ExternalColumns[MaxReview]"
+                      dataType="i4"
+                      name="MaxReview" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -696,21 +716,12 @@ FROM            fm_customers</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
-    fdc.CustomerState AS State,
-    COUNT(fdo.OrdersID) AS TotalStateOrders,
-    AVG(fdpr.ReviewStars) AS AverageProductReview,
-    SUM(fdo.TotalRetail) AS TotalRetailRevenue,
-    SUM(fdo.TotalWholesale) AS TotalWholesaleCost,
-    SUM(fdo.TotalRetail) - SUM(fdo.TotalWholesale) AS RevenueWholesaleDifference
-FROM
-    fudgemart.DimCustomer fdc
-INNER JOIN
-    fudgemart.DimOrders fdo ON fdc.CustomerID = fdo.CustomerID
-INNER JOIN
-    fudgemart.DimProductReview fdpr ON fdc.CustomerID = fdpr.CustomerID
-GROUP BY
-    fdc.CustomerState;</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        fdc.CustomerState AS State, COUNT(fdo.OrdersID) AS TotalStateOrders, MIN(fdpr.ReviewStars) AS MinReview, MAX(fdpr.ReviewStars) AS MaxReview, AVG(fdpr.ReviewStars) AS AverageProductReview, SUM(fdo.TotalRetail) 
+                         AS TotalRetailRevenue, SUM(fdo.TotalWholesale) AS TotalWholesaleCost, SUM(fdo.TotalRetail) - SUM(fdo.TotalWholesale) AS RevenueWholesaleDifference
+FROM            fudgemart.DimCustomer AS fdc INNER JOIN
+                         fudgemart.DimOrders AS fdo ON fdc.CustomerID = fdo.CustomerID INNER JOIN
+                         fudgemart.DimProductReview AS fdpr ON fdc.CustomerID = fdpr.CustomerID
+GROUP BY fdc.CustomerState</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -802,6 +813,24 @@ GROUP BY
                       lineageId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[RevenueWholesaleDifference]"
                       name="RevenueWholesaleDifference"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[MinReview]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].ExternalColumns[MinReview]"
+                      lineageId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[MinReview]"
+                      name="MinReview"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[MaxReview]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].ExternalColumns[MaxReview]"
+                      lineageId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].Columns[MaxReview]"
+                      name="MaxReview"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -831,6 +860,14 @@ GROUP BY
                       refId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].ExternalColumns[RevenueWholesaleDifference]"
                       dataType="cy"
                       name="RevenueWholesaleDifference" />
+                    <externalMetadataColumn
+                      refId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].ExternalColumns[MinReview]"
+                      dataType="i4"
+                      name="MinReview" />
+                    <externalMetadataColumn
+                      refId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Output].ExternalColumns[MaxReview]"
+                      dataType="i4"
+                      name="MaxReview" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -870,6 +907,16 @@ GROUP BY
                       dataType="cy"
                       lineageId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[RevenueWholesaleDifference]"
                       name="RevenueWholesaleDifference" />
+                    <outputColumn
+                      refId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[MinReview]"
+                      dataType="i4"
+                      lineageId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[MinReview]"
+                      name="MinReview" />
+                    <outputColumn
+                      refId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[MaxReview]"
+                      dataType="i4"
+                      lineageId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[MaxReview]"
+                      name="MaxReview" />
                     <outputColumn
                       refId="Package\DF - FactOrderReviewsByState\SRC - Stage Query OrderReviews.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
