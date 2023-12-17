@@ -306,6 +306,9 @@ CREATE TABLE fudgemart.OrderReviewByState (
    [State]  varchar(50)   NOT NULL
 ,  [OrderCount]  int   NULL
 ,  [AverageReview]  float   NULL
+,  [TotalRetailRevenue]  money NOT  NULL
+,  [TotalWholesaleCost]  money NOT  NULL
+,  [RevenueWholesaleDifference]  money NOT  NULL
 ) ON [PRIMARY]
 ;
 
