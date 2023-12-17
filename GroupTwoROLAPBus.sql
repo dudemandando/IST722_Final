@@ -328,12 +328,12 @@ DROP TABLE fudgemart.SubsByState
 /* Create table fudgemart.SubsByState */
 CREATE TABLE fudgemart.SubsByState (
    [State]  varchar(50)   NOT NULL
-,  [SubscriptionCount]  int   NULL
-,  [BasicRental]  int   NULL
-,  [BasicRentalPlusStreaming]  int   NULL
-,  [PremiumRental]  int   NULL
-,  [PremiumRentalPlusStreaming]  int   NULL
-,  [StreamingOnly]  int   NULL
+,  [SubscriptionCount]  int  NOT NULL
+,  [BasicRental]  int   NOT NULL
+,  [BasicRentalPlusStreaming]  int   NOT NULL
+,  [PremiumRental]  int   NOT NULL
+,  [PremiumRentalPlusStreaming]  int   NOT NULL
+,  [StreamingOnly]  int   NOT NULL
 ) ON [PRIMARY]
 ;
 
