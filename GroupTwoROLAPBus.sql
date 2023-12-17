@@ -1,24 +1,54 @@
---drop table [fudgemart_test].[DimCustomer], [fudgemart_test].[DimDate],[fudgemart_test].[DimOrders],[fudgemart_test].[DimProductReview],[fudgemart_test].[DimProducts],[fudgemart_test].[OrderReviewByState];
+/****** Object:  Database UNKNOWN    Script Date: 12/15/2023 7:01:51 PM ******/
+/*
+Kimball Group, The Microsoft Data Warehouse Toolkit
+Generate a database from the datamodel worksheet, version: 4
+
+You can use this Excel workbook as a data modeling tool during the logical design phase of your project.
+As discussed in the book, it is in some ways preferable to a real data modeling tool during the inital design.
+We expect you to move away from this spreadsheet and into a real modeling tool during the physical design phase.
+The authors provide this macro so that the spreadsheet isn't a dead-end. You can 'import' into your
+data modeling tool by generating a database using this script, then reverse-engineering that database into
+your tool.
+
+Uncomment the next lines if you want to drop and create the database
+*/
+/*
+DROP DATABASE UNKNOWN
+GO
+CREATE DATABASE UNKNOWN
+GO
+ALTER DATABASE UNKNOWN
+SET RECOVERY SIMPLE
+GO
+*/
 
 IF EXISTS (SELECT Name from sys.extended_properties where Name = 'Description')
     EXEC sys.sp_dropextendedproperty @name = 'Description'
 EXEC sys.sp_addextendedproperty @name = 'Description', @value = 'Default description - you should change this.'
 ;
 
+
+
+
+
 -- Create a schema to hold user views (set schema name on home page of workbook).
 -- It would be good to do this only if the schema doesn't exist already.
 GO
---CREATE SCHEMA fudgemart_test
+--CREATE SCHEMA fudgemart
 GO
 
 
-/* Drop table fudgemart_test.DimDate */
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'fudgemart_test.DimDate') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
-DROP TABLE fudgemart_test.DimDate 
+
+
+
+
+/* Drop table fudgemart.DimDate */
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'fudgemart.DimDate') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
+DROP TABLE fudgemart.DimDate 
 ;
 
-/* Create table fudgemart_test.DimDate */
-CREATE TABLE fudgemart_test.DimDate (
+/* Create table fudgemart.DimDate */
+CREATE TABLE fudgemart.DimDate (
    [DateKey]  int   NOT NULL
 ,  [Date]  date   NULL
 ,  [FullDateUSA]  nchar(11)   NOT NULL
@@ -33,22 +63,21 @@ CREATE TABLE fudgemart_test.DimDate (
 ,  [QuarterName]  nchar(10)   NOT NULL
 ,  [Year]  smallint   NOT NULL
 ,  [IsWeekday]  bit  DEFAULT 0 NOT NULL
-, CONSTRAINT [PK_fudgemart_test.DimDate] PRIMARY KEY CLUSTERED 
+, CONSTRAINT [PK_fudgemart.DimDate] PRIMARY KEY CLUSTERED 
 ( [DateKey] )
 ) ON [PRIMARY]
 ;
 
-
-INSERT INTO fudgemart_test.DimDate (DateKey, Date, FullDateUSA, DayOfWeek, DayName, DayOfMonth, DayOfYear, WeekOfYear, MonthName, MonthOfYear, Quarter, QuarterName, Year, IsWeekday)
+INSERT INTO fudgemart.DimDate (DateKey, Date, FullDateUSA, DayOfWeek, DayName, DayOfMonth, DayOfYear, WeekOfYear, MonthName, MonthOfYear, Quarter, QuarterName, Year, IsWeekday)
 VALUES (-1, '', 'Unk date', 0, 'Unk date', 0, 0, 0, 'Unk month', 0, 0, 'Unk qtr', 0, 0)
 ;
 
 -- User-oriented view definition
 GO
-IF EXISTS (select * from sys.views where object_id=OBJECT_ID(N'[fudgemart_test].[Date]'))
-DROP VIEW [fudgemart_test].[Date]
+IF EXISTS (select * from sys.views where object_id=OBJECT_ID(N'[fudgemart].[Date]'))
+DROP VIEW [fudgemart].[Date]
 GO
-CREATE VIEW [fudgemart_test].[Date] AS 
+CREATE VIEW [fudgemart].[Date] AS 
 SELECT [DateKey] AS [DateKey]
 , [Date] AS [Date]
 , [FullDateUSA] AS [FullDateUSA]
@@ -63,54 +92,55 @@ SELECT [DateKey] AS [DateKey]
 , [QuarterName] AS [QuarterName]
 , [Year] AS [Year]
 , [IsWeekday] AS [IsWeekday]
-FROM fudgemart_test.DimDate
+FROM fudgemart.DimDate
 GO
 
-/* Drop table fudgemart_test.DimCustomer */
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'fudgemart_test.DimCustomer') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
-DROP TABLE fudgemart_test.DimCustomer 
+
+
+/* Drop table fudgemart.DimCustomer */
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'fudgemart.DimCustomer') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
+DROP TABLE fudgemart.DimCustomer 
 ;
 
-/* Create table fudgemart_test.DimCustomer */
-CREATE TABLE fudgemart_test.DimCustomer (
+/* Create table fudgemart.DimCustomer */
+CREATE TABLE fudgemart.DimCustomer (
    [CustomerKey]  int IDENTITY  NOT NULL
-,  [CustomerID] int  NOT NULL
-,  [CustomerEmail]  nvarchar(40)   NOT NULL
-,  [CustomerName]  nvarchar(30)   NOT NULL
-,  [CustomerAddress]  nvarchar(50)   NOT NULL
-,  [CusomerZipcode]  nvarchar(50)   NOT NULL
-,  [CustomerCity]  nvarchar(50)   NOT NULL
-,  [CustomerState]  nvarchar(25)  DEFAULT 'N/A*' NOT NULL
-,  [RowIsCurrent]  nchar(1)   NOT NULL
-,  [RowStartDate]  datetime   NOT NULL
+,  [CustomerID]  int   NOT NULL
+,  [CustomerEmail]  varchar(100)   NOT NULL
+,  [CustomerFirstName]  varchar(50)   NOT NULL
+,  [CustomerLastName]  varchar(50)   NOT NULL
+,  [CusomerZipcode]  varchar(20)   NOT NULL
+,  [CustomerCity]  varchar(50)   NOT NULL
+,  [CustomerState]  varchar(25)  DEFAULT 'N/A' NOT NULL
+,  [RowIsCurrent]  nchar(1)   DEFAULT 'Y' NOT NULL
+,  [RowStartDate]  datetime   DEFAULT '12/25/9999' NOT NULL
 ,  [RowEndDate]  datetime  DEFAULT '12/31/9999' NOT NULL
-,  [RowChangeReason]  nvarchar(200)   NOT NULL
-, CONSTRAINT [PK_fudgemart_test.DimCustomer] PRIMARY KEY CLUSTERED 
-( [CustomerKey], [CustomerID] )
+,  [RowChangeReason]  nvarchar(200)  DEFAULT 'N/A' NOT NULL
+, CONSTRAINT [PK_fudgemart.DimCustomer] PRIMARY KEY CLUSTERED 
+( [CustomerKey] )
 ) ON [PRIMARY]
 ;
 
 
-
-SET IDENTITY_INSERT fudgemart_test.DimCustomer ON
+SET IDENTITY_INSERT fudgemart.DimCustomer ON
 ;
-INSERT INTO fudgemart_test.DimCustomer (CustomerKey, CustomerID, CustomerEmail, CustomerName, CustomerAddress, CusomerZipcode, CustomerCity, CustomerState, RowIsCurrent, RowStartDate, RowEndDate, RowChangeReason)
-VALUES (-1, '-1', '', '', '', 'N/A', '', '', 'Y', '12/31/1899', '12/31/9999', 'N/A')
+INSERT INTO fudgemart.DimCustomer (CustomerKey, CustomerID, CustomerEmail, CustomerFirstName, CustomerLastName, CusomerZipcode, CustomerCity, CustomerState, RowIsCurrent, RowStartDate, RowEndDate, RowChangeReason)
+VALUES (-1, '-1', '', '', '', '', '', '', 'Y', '12/31/1899', '12/31/9999', 'N/A')
 ;
-SET IDENTITY_INSERT fudgemart_test.DimCustomer OFF
+SET IDENTITY_INSERT fudgemart.DimCustomer OFF
 ;
 
 -- User-oriented view definition
 GO
-IF EXISTS (select * from sys.views where object_id=OBJECT_ID(N'[fudgemart_test].[DimCustomer]'))
-DROP VIEW [fudgemart_test].[Customer]
+IF EXISTS (select * from sys.views where object_id=OBJECT_ID(N'[fudgemart].[DimCustomer]'))
+DROP VIEW [fudgemart].[DimCustomer]
 GO
-CREATE VIEW [fudgemart_test].[Customer] AS 
+CREATE VIEW [fudgemart].[DimCustomer] AS 
 SELECT [CustomerKey] AS [CustomerKey]
 , [CustomerID] AS [CustomerID]
 , [CustomerEmail] AS [CustomerEmail]
-, [CustomerName] AS [CustomerName]
-, [CustomerAddress] AS [CustomerAddress]
+, [CustomerFirstName] AS [CustomerFirstName]
+, [CustomerLastName] AS [CustomerLastName]
 , [CusomerZipcode] AS [CusomerZipcode]
 , [CustomerCity] AS [CustomerCity]
 , [CustomerState] AS [CustomerState]
@@ -118,44 +148,44 @@ SELECT [CustomerKey] AS [CustomerKey]
 , [RowStartDate] AS [Row Start Date]
 , [RowEndDate] AS [Row End Date]
 , [RowChangeReason] AS [Row Change Reason]
-FROM fudgemart_test.DimCustomer
+FROM fudgemart.DimCustomer
 GO
 
 
-/* Drop table fudgemart_test.DimOrders */
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'fudgemart_test.DimOrders') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
-DROP TABLE fudgemart_test.DimOrders 
+/* Drop table fudgemart.DimOrders */
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'fudgemart.DimOrders') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
+DROP TABLE fudgemart.DimOrders 
 ;
 
-/* Create table fudgemart_test.DimOrders */
-CREATE TABLE fudgemart_test.DimOrders (
+/* Create table fudgemart.DimOrders */
+CREATE TABLE fudgemart.DimOrders (
    [OrderKey]  int IDENTITY  NOT NULL
 ,  [OrdersID]  int   NOT NULL
-,  [CustomerID] int  NOT NULL
+,  [CustomerID]  int   NOT NULL
 ,  [OrderDate]  datetime   NOT NULL
 ,  [Shipped date]  datetime   NOT NULL
-,  [ProductID]  int  NOT NULL
-,  [CustomerZip]  nvarchar(50)   NOT NULL
-, CONSTRAINT [PK_fudgemart_test.DimOrders] PRIMARY KEY CLUSTERED 
+,  [CustomerZip]  varchar(20)   NOT NULL
+, CONSTRAINT [PK_fudgemart.DimOrders] PRIMARY KEY CLUSTERED 
 ( [OrderKey] )
 ) ON [PRIMARY]
 ;
 
 
-SET IDENTITY_INSERT fudgemart_test.DimOrders ON
+
+SET IDENTITY_INSERT fudgemart.DimOrders ON
 ;
-INSERT INTO fudgemart_test.DimOrders (OrderKey, OrdersID, CustomerID, OrderDate, [Shipped date], ProductID, CustomerZip)
-VALUES (-1, -1, -1, '', '', -1, '')
+INSERT INTO fudgemart.DimOrders (OrderKey, OrdersID, CustomerID, OrderDate, [Shipped date], CustomerZip)
+VALUES (-1, -1, -1, '', '', -1)
 ;
-SET IDENTITY_INSERT fudgemart_test.DimOrders OFF
+SET IDENTITY_INSERT fudgemart.DimOrders OFF
 ;
 
 -- User-oriented view definition
 GO
-IF EXISTS (select * from sys.views where object_id=OBJECT_ID(N'[fudgemart_test].[DimOrderFulfillment]'))
-DROP VIEW [fudgemart_test].[DimOrderFulfillment]
+IF EXISTS (select * from sys.views where object_id=OBJECT_ID(N'[fudgemart].[DimOrderFulfillment]'))
+DROP VIEW [fudgemart].[DimOrderFulfillment]
 GO
-CREATE VIEW [fudgemart_test].[DimOrderFulfillment] AS 
+CREATE VIEW [fudgemart].[DimOrderFulfillment] AS 
 SELECT [OrderKey] AS [OrderKey]
 , [OrdersID] AS [OrdersID]
 , [CustomerID] AS [CustomerID]
@@ -163,45 +193,46 @@ SELECT [OrderKey] AS [OrderKey]
 , [Shipped date] AS [Shipped date]
 , [ProductID] AS [ProductID]
 , [CustomerZip] AS [CustomerZip]
-FROM fudgemart_test.DimOrders
+FROM fudgemart.DimOrders
 GO
 
 
-/* Drop table fudgemart_test.DimProducts */
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'fudgemart_test.DimProducts') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
-DROP TABLE fudgemart_test.DimProducts 
+
+/* Drop table fudgemart.DimProducts */
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'fudgemart.DimProducts') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
+DROP TABLE fudgemart.DimProducts 
 ;
 
-/* Create table fudgemart_test.DimProducts */
-CREATE TABLE fudgemart_test.DimProducts (
+/* Create table fudgemart.DimProducts */
+CREATE TABLE fudgemart.DimProducts (
    [ProductKey]  int IDENTITY  NOT NULL
-,  [ProductID]  int NOT NULL
-,  [ProductName]  nvarchar(100)   NOT NULL
+,  [ProductID]  int  NOT NULL
+,  [ProductName]  varchar(50)   NOT NULL
 ,  [ProductRetailPrice]  money   NOT NULL
 ,  [ProductWholesalePrice]  money   NOT NULL
-,  [ProductCategory]  nvarchar(50)   NOT NULL
-,  [ProductDiscontinued]  smallint   NOT NULL
-, CONSTRAINT [PK_fudgemart_test.DimProducts] PRIMARY KEY CLUSTERED 
+,  [ProductCategory]  varchar(20)   NOT NULL
+,  [ProductDiscontinued]  bit   NOT NULL
+, CONSTRAINT [PK_fudgemart.DimProducts] PRIMARY KEY CLUSTERED 
 ( [ProductKey], [ProductID] )
 ) ON [PRIMARY]
 ;
 
 
 
-SET IDENTITY_INSERT fudgemart_test.DimProducts ON
+SET IDENTITY_INSERT fudgemart.DimProducts ON
 ;
-INSERT INTO fudgemart_test.DimProducts (ProductKey, ProductID, ProductName, ProductRetailPrice, ProductWholesalePrice, ProductCategory, ProductDiscontinued)
-VALUES (-1, -1, '', 0.00, 0.00, '', -1)
+INSERT INTO fudgemart.DimProducts (ProductKey, ProductID, ProductName, ProductRetailPrice, ProductWholesalePrice, ProductCategory, ProductDiscontinued)
+VALUES (-1, -1, '', -1, -1, '', -1)
 ;
-SET IDENTITY_INSERT fudgemart_test.DimProducts OFF
+SET IDENTITY_INSERT fudgemart.DimProducts OFF
 ;
 
 -- User-oriented view definition
 GO
-IF EXISTS (select * from sys.views where object_id=OBJECT_ID(N'[fudgemart_test].[DimCustomer]'))
-DROP VIEW [fudgemart_test].[DimCustomer]
+IF EXISTS (select * from sys.views where object_id=OBJECT_ID(N'[fudgemart].[DimCustomer]'))
+DROP VIEW [fudgemart].[DimProducts]
 GO
-CREATE VIEW [fudgemart_test].[DimCustomer] AS 
+CREATE VIEW [fudgemart].[DimProducts] AS 
 SELECT [ProductKey] AS [ProductKey]
 , [ProductID] AS [ProductID]
 , [ProductName] AS [ProductName]
@@ -209,47 +240,46 @@ SELECT [ProductKey] AS [ProductKey]
 , [ProductWholesalePrice] AS [ProductWholesalePrice]
 , [ProductCategory] AS [ProductCategory]
 , [ProductDiscontinued] AS [ProductDiscontinued]
-FROM fudgemart_test.DimProducts
+FROM fudgemart.DimProducts
 GO
 
 
-/* Drop table fudgemart_test.DimProductReview */
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'fudgemart_test.DimProductReview') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
-DROP TABLE fudgemart_test.DimProductReview 
+/* Drop table fudgemart.DimProductReview */
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'fudgemart.DimProductReview') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
+DROP TABLE fudgemart.DimProductReview 
 ;
 
-/* Create table fudgemart_test.DimProductReview */
-CREATE TABLE fudgemart_test.DimProductReview (
+/* Create table fudgemart.DimProductReview */
+CREATE TABLE fudgemart.DimProductReview (
    [ProductReview]  int IDENTITY  NOT NULL
-,  [CustomerID]  int  NOT NULL
+,  [CustomerID]  int NOT NULL
 ,  [ProductID]  int NOT NULL
 ,  [ReviewDate]  datetime   NOT NULL
 ,  [ReviewStars]  int   NOT NULL
-,  [RowIsCurrent]  nchar(1)   NOT NULL
-,  [RowStartDate]  datetime   NOT NULL
+,  [RowIsCurrent]  nchar(1) DEFAULT 'Y'   NOT NULL
+,  [RowStartDate]  datetime DEFAULT  '12/15/9999' NOT NULL
 ,  [RowEndDate]  datetime  DEFAULT '12/31/9999' NOT NULL
-,  [RowChangeReason]  nvarchar(200)   NOT NULL
-, CONSTRAINT [PK_fudgemart_test.DimProductReview] PRIMARY KEY CLUSTERED 
+,  [RowChangeReason]  nvarchar(200) DEFAULT 'N/A'   NOT NULL
+, CONSTRAINT [PK_fudgemart.DimProductReview] PRIMARY KEY CLUSTERED 
 ( [ProductReview] )
 ) ON [PRIMARY]
 ;
 
 
-
-SET IDENTITY_INSERT fudgemart_test.DimProductReview ON
+SET IDENTITY_INSERT fudgemart.DimProductReview ON
 ;
-INSERT INTO fudgemart_test.DimProductReview (ProductReview, CustomerID, ProductID, ReviewDate, ReviewStars, RowIsCurrent, RowStartDate, RowEndDate, RowChangeReason)
+INSERT INTO fudgemart.DimProductReview (ProductReview, CustomerID, ProductID, ReviewDate, ReviewStars, RowIsCurrent, RowStartDate, RowEndDate, RowChangeReason)
 VALUES (-1, -1, -1, '', -1, 'Y', '12/31/1899', '12/31/9999', 'N/A')
 ;
-SET IDENTITY_INSERT fudgemart_test.DimProductReview OFF
+SET IDENTITY_INSERT fudgemart.DimProductReview OFF
 ;
 
 -- User-oriented view definition
 GO
-IF EXISTS (select * from sys.views where object_id=OBJECT_ID(N'[fudgemart_test].[ProductReview]'))
-DROP VIEW [fudgemart_test].[ProductReview]
+IF EXISTS (select * from sys.views where object_id=OBJECT_ID(N'[fudgemart].[ProductReview]'))
+DROP VIEW [fudgemart].[ProductReview]
 GO
-CREATE VIEW [fudgemart_test].[ProductReview] AS 
+CREATE VIEW [fudgemart].[ProductReview] AS 
 SELECT [ProductReview] AS [ProductReview]
 , [CustomerID] AS [CustomerID]
 , [ProductID] AS [ProductID]
@@ -259,17 +289,18 @@ SELECT [ProductReview] AS [ProductReview]
 , [RowStartDate] AS [Row Start Date]
 , [RowEndDate] AS [Row End Date]
 , [RowChangeReason] AS [Row Change Reason]
-FROM fudgemart_test.DimProductReview
+FROM fudgemart.DimProductReview
 GO
 
 
-/* Drop table fudgemart_test.OrderReviewByState */
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'fudgemart_test.OrderReviewByState') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
-DROP TABLE fudgemart_test.OrderReviewByState 
+
+/* Drop table fudgemart.OrderReviewByState */
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'fudgemart.OrderReviewByState') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
+DROP TABLE fudgemart.OrderReviewByState 
 ;
 
-/* Create table fudgemart_test.OrderReviewByState */
-CREATE TABLE fudgemart_test.OrderReviewByState (
+/* Create table fudgemart.OrderReviewByState */
+CREATE TABLE fudgemart.OrderReviewByState (
    [State]  varchar(50)   NOT NULL
 ,  [OrderCount]  int   NULL
 ,  [AverageReview]  float   NULL
@@ -278,12 +309,95 @@ CREATE TABLE fudgemart_test.OrderReviewByState (
 
 -- User-oriented view definition
 GO
-IF EXISTS (select * from sys.views where object_id=OBJECT_ID(N'[fudgemart_test].[OrdersByZip]'))
-DROP VIEW [fudgemart_test].[OrdersByZip]
+IF EXISTS (select * from sys.views where object_id=OBJECT_ID(N'[fudgemart].[OrdersByZip]'))
+DROP VIEW [fudgemart].[OrdersByZip]
 GO
-CREATE VIEW [fudgemart_test].[OrdersByZip] AS 
+CREATE VIEW [fudgemart].[OrdersByZip] AS 
 SELECT [State] AS [State]
 , [OrderCount] AS [OrderCount]
 , [AverageReview] AS [AverageReview]
-FROM fudgemart_test.OrderReviewByState
+FROM fudgemart.OrderReviewByState
+GO
+
+
+/* Drop table fudgemart.OrderReviewByState */
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'fudgemart.SubsByState') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
+DROP TABLE fudgemart.SubsByState 
+;
+
+/* Create table fudgemart.SubsByState */
+CREATE TABLE fudgemart.SubsByState (
+   [State]  varchar(50)   NOT NULL
+,  [SubscriptionCount]  int  NOT NULL
+,  [BasicRental]  int   NOT NULL
+,  [BasicRentalPlusStreaming]  int   NOT NULL
+,  [PremiumRental]  int   NOT NULL
+,  [PremiumRentalPlusStreaming]  int   NOT NULL
+,  [StreamingOnly]  int   NOT NULL
+) ON [PRIMARY]
+;
+
+-- User-oriented view definition
+GO
+IF EXISTS (select * from sys.views where object_id=OBJECT_ID(N'[fudgemart].[SubsByState]'))
+DROP VIEW [fudgemart].[SubsByState]
+GO
+CREATE VIEW [fudgemart].[SubsByState] AS 
+SELECT [State] AS [State]
+, [SubscriptionCount] AS [SubscriptionCount]
+, [BasicRental] AS [BasicRental]
+, [BasicRentalPlusStreaming] AS [BasicRentalPlusStreaming]
+, [PremiumRental] AS [PremiumRental]
+, [PremiumRentalPlusStreaming] AS [PremiumRentalPlusStreaming]
+, [StreamingOnly] AS [StreamingOnly]
+
+FROM fudgemart.SubsByState
+GO
+
+
+/* Drop table fudgemart.DimSubs */
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'fudgemart.DimSubs') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
+DROP TABLE fudgemart.DimSubs 
+;
+
+/* Create table fudgemart.DimSubs */
+CREATE TABLE fudgemart.DimSubs (
+   [SubID]  int IDENTITY  NOT NULL
+,  [AccountID]  int   NOT NULL
+,  [ZipState]  varchar(2)  DEFAULT 'N/A' NOT NULL
+,  [PlanName]  varchar(50)  DEFAULT 'N/A' NOT NULL
+,  [PlanPrice]  money  DEFAULT 0 NOT NULL
+,  [RowIsCurrent]  nchar(1)  DEFAULT 'Y'  NOT NULL
+,  [RowStartDate]  datetime DEFAULT '12/15/9999'  NOT NULL
+,  [RowEndDate]  datetime  DEFAULT '12/31/9999' NOT NULL
+,  [RowChangeReason]  nvarchar(200)  DEFAULT 'N/A'   NOT NULL
+, CONSTRAINT [PK_fudgemart.DimSubs] PRIMARY KEY CLUSTERED 
+( [SubID] )
+) ON [PRIMARY]
+;
+
+SET IDENTITY_INSERT fudgemart.DimSubs ON
+;
+INSERT INTO fudgemart.DimSubs (SubID, AccountID, ZipState, PlanName, PlanPrice, RowIsCurrent, RowStartDate, RowEndDate, RowChangeReason)
+VALUES (-1, -1, '', '', 0, 'Y', '12/31/1899', '12/31/9999', 'N/A')
+;
+SET IDENTITY_INSERT fudgemart.DimSubs OFF
+;
+
+-- User-oriented view definition
+GO
+IF EXISTS (select * from sys.views where object_id=OBJECT_ID(N'[fudgemart].[DimSubs]'))
+DROP VIEW [fudgemart].[DimSubs]
+GO
+CREATE VIEW [fudgemart].[DimSubs] AS 
+SELECT [SubID] AS [SubID]
+, [AccountID] AS [AccountID]
+, [ZipState] AS [ZipState]
+, [PlanName] AS [PlanName]
+, [PlanPrice] AS [PlanPrice]
+, [RowIsCurrent] AS [Row Is Current]
+, [RowStartDate] AS [Row Start Date]
+, [RowEndDate] AS [Row End Date]
+, [RowChangeReason] AS [Row Change Reason]
+FROM fudgemart.DimSubs
 GO
